@@ -43,6 +43,7 @@ class Product extends Model {
             notNull: { msg: "image is required" },
             notEmpty: true,
           },
+          defaultValue: "img",
         },
         stock: {
           type: DataTypes.TINYINT,

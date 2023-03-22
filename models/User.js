@@ -78,6 +78,22 @@ class User extends Model {
       {
         sequelize,
         modelName: "user",
+        hooks: {
+          beforeCreate: async (user) => {
+            const hashedPassword = await bcrypt.hash(user.password, 12);
+            user.password = hashedPassword;
+          },
+          beforeUpdate: async (user) => {
+            const hashedPassword = await bcrypt.hash(user.password, 12);
+            user.password = hashedPassword;
+          },
+          beforeBulkCreate: async (users) => {
+            users.map(async (user) => {
+              const hashedPassword = await bcrypt.hash(user.password, 12);
+              user.password = hashedPassword;
+            });
+          },
+        },
       },
     );
     return User;
@@ -86,21 +102,5 @@ class User extends Model {
     return await bcrypt.compare(password, this.password);
   }
 }
-
-User.beforeCreate(async (user) => {
-  const hashedPassword = await bcrypt.hash(user.password, 12);
-  user.password = hashedPassword;
-});
-User.beforeUpdate(async (user) => {
-  const hashedPassword = await bcrypt.hash(user.password, 12);
-  user.password = hashedPassword;
-});
-
-User.beforeBulkCreate(async (users) => {
-  users.map(async (user) => {
-    const hashedPassword = await bcrypt.hash(user.password, 12);
-    user.password = hashedPassword;
-  });
-});
 
 module.exports = User;

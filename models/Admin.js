@@ -49,26 +49,26 @@ class Admin extends Model {
       {
         sequelize,
         modelName: "admin",
+        hooks: {
+          beforeCreate: async (admin) => {
+            const hashedPassword = await bcrypt.hash(admin.password, 12);
+            admin.password = hashedPassword;
+          },
+          beforeUpdate: async (admin) => {
+            const hashedPassword = await bcrypt.hash(admin.password, 12);
+            admin.password = hashedPassword;
+          },
+          beforeBulkCreate: async (admins) => {
+            admins.map(async (admin) => {
+              const hashedPassword = await bcrypt.hash(admin.password, 12);
+              admin.password = hashedPassword;
+            });
+          },
+        },
       },
     );
     return Admin;
   }
 }
-
-Admin.beforeCreate(async (admin) => {
-  const hashedPassword = await bcrypt.hash(admin.password, 12);
-  admin.password = hashedPassword;
-});
-Admin.beforeUpdate(async (admin) => {
-  const hashedPassword = await bcrypt.hash(admin.password, 12);
-  admin.password = hashedPassword;
-});
-
-Admin.beforeBulkCreate(async (admins) => {
-  admins.map(async (admin) => {
-    const hashedPassword = await bcrypt.hash(admin.password, 12);
-    admin.password = hashedPassword;
-  });
-});
 
 module.exports = Admin;
