@@ -21,20 +21,28 @@
  */
 
 const { faker } = require("@faker-js/faker");
-const { Article } = require("../models");
+const { User } = require("../models");
 
 faker.locale = "es";
 
 module.exports = async () => {
-  const articles = [];
+  const users = [];
 
-  for (let i = 0; i < 3000; i++) {
-    articles.push({
-      title: faker.lorem.sentence(5),
-      content: faker.lorem.paragraphs(),
+  for (let i = 0; i < 20; i++) {
+    let firstname = faker.name.firstName();
+    let lastname = faker.name.lastName();
+    users.push({
+      firstname,
+      lastname,
+      email: faker.internet.email(firstname, lastname, "gmail.com"),
+      address: faker.fake(`${faker.address.city()}, ${faker.address.streetAddress()}`),
+      password: "1234",
+      phone: faker.phone.number("+5989#######"),
+      avatar: "",
+      birthdate: faker.date.birthdate(),
     });
   }
 
-  await Article.bulkCreate(articles);
+  await User.bulkCreate(users);
   console.log("[Database] Se corrió el seeder de Articles.");
 };
