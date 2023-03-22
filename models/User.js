@@ -11,9 +11,35 @@ class User extends Model {
         },
         firstname: {
           type: DataTypes.STRING,
+          allowNull: false,
         },
         lastname: {
           type: DataTypes.STRING,
+          allowNull: false,
+        },
+        email: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        address: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        password: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        phone: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        avatar: {
+          type: DataTypes.STRING,
+          allowNull: false,
+        },
+        birthdate: {
+          type: DataTypes.DATE,
+          allowNull: false,
         },
       },
       {
