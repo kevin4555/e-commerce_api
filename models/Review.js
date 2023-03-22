@@ -8,9 +8,17 @@ class Review extends Model {
           type: DataTypes.BIGINT.UNSIGNED,
           primaryKey: true,
           autoIncrement: true,
+          set() {
+            throw new Error("Do not try to set the id value!");
+          },
         },
         content: {
           type: DataTypes.TEXT,
+          allowNull: false,
+          validate: {
+            notNull: { msg: "content is required" },
+            notEmpty: true,
+          },
         },
       },
       {
