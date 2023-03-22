@@ -9,8 +9,8 @@ class Product extends Model {
           primaryKey: true,
           autoIncrement: true,
         },
-        title: {
-          name: DataTypes.STRING,
+        name: {
+          type: DataTypes.STRING,
         },
         description: {
           type: DataTypes.TEXT,
