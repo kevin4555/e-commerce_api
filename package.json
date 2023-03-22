@@ -1,5 +1,5 @@
 {
-  "name": "hackacademy_ejemplo_mvc_sequelize",
+  "name": "manos_creativas_ecommerce",
   "version": "1.0.0",
   "main": "server.js",
   "scripts": {
@@ -22,7 +22,7 @@
     "slugify": "^1.6.5",
     "sqlite3": "^5.0.8"
   },
-  "description": "Hack Academy - Ejemplo de MVC y Sequelize",
+  "description": "Kevin Lapizaga Nicolás Ross Maia Chamorro Sebastián Wajshan",
   "devDependencies": {
     "@faker-js/faker": "^6.3.1"
   }
