@@ -10,7 +10,7 @@ class Product extends Model {
           autoIncrement: true,
         },
         title: {
-          name: DataTypes.STRING,
+          type: DataTypes.STRING,
         },
         description: {
           type: DataTypes.TEXT,
@@ -29,6 +29,7 @@ class Product extends Model {
         },
         featured: {
           type: DataTypes.BOOLEAN,
+          defaultValue: false,
         },
         slug: {
           type: DataTypes.STRING,
