@@ -1,8 +1,8 @@
 const { Model, DataTypes } = require("sequelize");
 
-class Article extends Model {
+class Product extends Model {
   static initModel(sequelize) {
-    Article.init(
+    Product.init(
       {
         id: {
           type: DataTypes.BIGINT.UNSIGNED,
@@ -10,20 +10,38 @@ class Article extends Model {
           autoIncrement: true,
         },
         title: {
+          name: DataTypes.STRING,
+        },
+        description: {
+          type: DataTypes.TEXT,
+        },
+        price: {
+          type: DataTypes.FLOAT,
+        },
+        img: {
           type: DataTypes.STRING,
         },
-        content: {
-          type: DataTypes.TEXT,
+        stock: {
+          type: DataTypes.TINYINT,
+        },
+        category: {
+          type: DataTypes.STRING,
+        },
+        featured: {
+          type: DataTypes.BOOLEAN,
+        },
+        slug: {
+          type: DataTypes.STRING,
         },
       },
       {
         sequelize,
-        modelName: "article",
+        modelName: "product",
       },
     );
 
-    return Article;
+    return Product;
   }
 }
 
-module.exports = Article;
+module.exports = Product;
