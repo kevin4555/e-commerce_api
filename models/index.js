@@ -15,14 +15,19 @@ const User = require("./User");
 const Admin = require("./Admin");
 const Product = require("./Product");
 const Order = require("./Order");
+const Review = require("./Review");
 
 User.initModel(sequelize);
 Admin.initModel(sequelize);
 Product.initModel(sequelize);
 Order.initModel(sequelize);
+Review.initModel(sequelize);
 
 User.hasMany(Order);
 Order.belongsTo(User);
+
+User.hasMany(Review);
+Review.belongsTo(User);
 
 module.exports = {
   sequelize,
@@ -30,4 +35,5 @@ module.exports = {
   Admin,
   Product,
   Order,
+  Review,
 };

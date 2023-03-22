@@ -1,20 +1,25 @@
 const { Model, DataTypes } = require("sequelize");
 
-class Comment extends Model {
+class Review extends Model {
   static initModel(sequelize) {
-    Comment.init(
+    Review.init(
       {
+        id: {
+          type: DataTypes.BIGINT.UNSIGNED,
+          primaryKey: true,
+          autoIncrement: true,
+        },
         content: {
           type: DataTypes.TEXT,
         },
       },
       {
         sequelize,
-        modelName: "comment",
+        modelName: "review",
       },
     );
-    return Comment;
+    return Review;
   }
 }
 
-module.exports = Comment;
+module.exports = Review;
