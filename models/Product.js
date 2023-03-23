@@ -37,7 +37,7 @@ class Product extends Model {
           },
         },
         img: {
-          type: DataTypes.STRING,
+          type: DataTypes.JSON,
           allowNull: false,
           validate: {
             notNull: { msg: "image is required" },
