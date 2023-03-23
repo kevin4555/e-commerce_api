@@ -4,8 +4,8 @@
  */
 
 const userRoutes = require("./userRoutes");
-const articleRoutes = require("./articleRoutes");
-const commentRoutes = require("./commentRoutes");
+const productRoutes = require("./productRoutes");
+//const commentRoutes = require("./commentRoutes");
 
 /**
  * Otra alternativa podría ser organizar las rutas según su nivel de
@@ -28,9 +28,9 @@ module.exports = (app) => {
    * en inglés.
    */
 
-  app.use("/usuarios", userRoutes);
-  app.use("/articulos", articleRoutes);
-  app.use("/comentarios", commentRoutes);
+  app.use("/users", userRoutes);
+  app.use("/products", productRoutes);
+  //app.use("/comentarios", commentRoutes);
 
   app.use("/", publicRoutes);
   app.use("/panel", privateRoutes);

@@ -25,6 +25,6 @@
   },
   "description": "Kevin Lapizaga Nicolás Ross Maia Chamorro Sebastián Wajshan",
   "devDependencies": {
-    "@faker-js/faker": "^6.3.1"
+    "@faker-js/faker": "7.6.0"
   }
 }
