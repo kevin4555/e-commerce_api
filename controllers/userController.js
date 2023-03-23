@@ -1,12 +1,26 @@
 const { User } = require("../models");
 
 // Display a listing of the resource.
-async function index(req, res) {}
+async function index(req, res) {
+  try {
+    const users = await User.findAll({ raw: true, nest: true });
+    if (!users) {
+      throw new Error();
+    }
+    for (const user of users) {
+      delete user.password;
+    }
+    return res.json(users);
+  } catch (error) {
+    return res.status(500).json({
+      message: "Internal Server Error",
+    });
+  }
+}
 
 // Display the specified resource.
 async function show(req, res) {
   try {
-    console.log(req.params.id);
     const user = await User.findByPk(req.params.id, { raw: true, nest: true });
     if (user) {
       delete user.password;
