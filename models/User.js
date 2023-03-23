@@ -88,10 +88,10 @@ class User extends Model {
             user.password = hashedPassword;
           },
           beforeBulkCreate: async (users) => {
-            users.map(async (user) => {
+            for (let user of users) {
               const hashedPassword = await bcrypt.hash(user.password, 12);
               user.password = hashedPassword;
-            });
+            }
           },
         },
       },
