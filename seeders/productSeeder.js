@@ -31,7 +31,7 @@ module.exports = async () => {
       price: 10,
       img: { img1: "Ceramica_Maceta.jpg", img2: "Ceramica_Maceta2.jpg" },
       stock: 52,
-      category: "Cerámica",
+      categoryId: 2,
     },
     {
       title: "Pintura de Orca",
@@ -40,7 +40,7 @@ module.exports = async () => {
       price: 30,
       img: { img1: "Pintura_Orca.avif", img2: "Pintura_Orca2.avif", img3: "Pintura_Orca3.webp" },
       stock: 2,
-      category: "Pintura",
+      categoryId: 1,
     },
     {
       title: "Pintura de una ballena",
@@ -53,7 +53,7 @@ module.exports = async () => {
         img3: "Pintura_Ballena3.webp",
       },
       stock: 4,
-      category: "Pintura",
+      categoryId: 1,
     },
     {
       title: "Pintura Beige Abstracta",
@@ -62,7 +62,7 @@ module.exports = async () => {
       price: 250,
       img: { img1: "Pintura_Beige.avif", img2: "Pintura_Beige2.avif" },
       stock: 1,
-      category: "Pintura",
+      categoryId: 1,
     },
     {
       title: "Pintura en Blanco y Negro",
@@ -74,7 +74,7 @@ module.exports = async () => {
         img1: "Pintura_BlancoyNegro2.webp",
       },
       stock: 6,
-      category: "Pintura",
+      categoryId: 1,
     },
     {
       title: "Pintura de la casa de un Hobbit",
@@ -83,7 +83,7 @@ module.exports = async () => {
       price: 1000,
       img: { img1: "Pintura_Cabania.webp", img2: "Pintura_Cabania2.webp" },
       stock: 1,
-      category: "Pintura",
+      categoryId: 1,
     },
     {
       title: "Pintura de un hipopótamo",
@@ -95,7 +95,7 @@ module.exports = async () => {
         img2: "Pintura_hipopotamo2.webp",
       },
       stock: 14,
-      category: "Pintura",
+      categoryId: 1,
     },
     {
       title: "Pintura de Montaña Nevada",
@@ -104,7 +104,7 @@ module.exports = async () => {
       price: 230,
       img: { img1: "Pintura_Montania.webp", img2: "Pintura_Montania2.webp" },
       stock: 4,
-      category: "Pintura",
+      categoryId: 1,
     },
     {
       title: "Pintura de Olas",
@@ -113,7 +113,7 @@ module.exports = async () => {
       price: 25,
       img: { img1: "Pintura_Olas.webp", img2: "Pintura_Olas2.webp" },
       stock: 2,
-      category: "Pintura",
+      categoryId: 1,
     },
     {
       title: "Pintura de Perros",
@@ -122,7 +122,7 @@ module.exports = async () => {
       price: 30,
       img: { img1: "Pintura_Perro.webp", img2: "Pintura_Perro2.webp", img3: "Pintura_Perro3.webp" },
       stock: 2,
-      category: "Pintura",
+      categoryId: 1,
     },
     {
       title: "Pintura abstrácta cálida",
@@ -131,7 +131,7 @@ module.exports = async () => {
       price: 340,
       img: { img1: "Pintura_Warm.avif", img2: "Pintura_warm2.avif" },
       stock: 2,
-      category: "Pintura",
+      categoryId: 1,
     },
   ];
   await Product.bulkCreate(products);

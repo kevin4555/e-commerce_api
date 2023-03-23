@@ -1,9 +1,9 @@
 require("dotenv").config();
 
 async function runAllSeeders() {
-  await require("./productSeeder")();
   await require("./userSeeder")();
-
+  await require("./categorySeeder")();
+  await require("./productSeeder")();
   console.log("[Database] ¡Los datos de prueba fueron insertados!");
 }
 

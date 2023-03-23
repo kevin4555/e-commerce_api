@@ -54,14 +54,6 @@ class Product extends Model {
             notEmpty: true,
           },
         },
-        category: {
-          type: DataTypes.STRING,
-          allowNull: false,
-          validate: {
-            notNull: { msg: "category is required" },
-            notEmpty: true,
-          },
-        },
         featured: {
           type: DataTypes.BOOLEAN,
           defaultValue: false,

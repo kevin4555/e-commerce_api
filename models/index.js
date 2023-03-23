@@ -12,6 +12,7 @@ const sequelize = new Sequelize(
 );
 
 const User = require("./User");
+const Category = require("./Category");
 const Admin = require("./Admin");
 const Product = require("./Product");
 const Order = require("./Order");
@@ -19,12 +20,16 @@ const Review = require("./Review");
 
 User.initModel(sequelize);
 Admin.initModel(sequelize);
+Category.initModel(sequelize);
 Product.initModel(sequelize);
 Order.initModel(sequelize);
 Review.initModel(sequelize);
 
 User.hasMany(Order);
 Order.belongsTo(User);
+
+Category.hasMany(Product);
+Product.belongsTo(Category);
 
 User.hasMany(Review);
 Review.belongsTo(User);
@@ -34,6 +39,7 @@ module.exports = {
   User,
   Admin,
   Product,
+  Category,
   Order,
   Review,
 };
