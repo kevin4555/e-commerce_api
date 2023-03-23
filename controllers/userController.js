@@ -4,7 +4,22 @@ const { User } = require("../models");
 async function index(req, res) {}
 
 // Display the specified resource.
-async function show(req, res) {}
+async function show(req, res) {
+  try {
+    console.log(req.params.id);
+    const user = await User.findByPk(req.params.id, { raw: true, nest: true });
+    if (user) {
+      delete user.password;
+      return res.status(200).json(user);
+    } else {
+      throw new Error();
+    }
+  } catch (error) {
+    return res.status(404).json({
+      message: "Not Found",
+    });
+  }
+}
 
 // Show the form for creating a new resource
 async function create(req, res) {}
