@@ -1,6 +1,10 @@
 const { Model, DataTypes } = require("sequelize");
 const bcrypt = require("bcryptjs");
 
+async function hashPassword(user) {
+  user.password = await bcrypt.hash(user.password, 12);
+}
+
 class User extends Model {
   static initModel(sequelize) {
     User.init(
@@ -78,24 +82,25 @@ class User extends Model {
       {
         sequelize,
         modelName: "user",
-        hooks: {
-          beforeCreate: async (user) => {
-            const hashedPassword = await bcrypt.hash(user.password, 12);
-            user.password = hashedPassword;
-          },
-          beforeUpdate: async (user) => {
-            const hashedPassword = await bcrypt.hash(user.password, 12);
-            user.password = hashedPassword;
-          },
-          beforeBulkCreate: async (users) => {
-            for (let user of users) {
-              const hashedPassword = await bcrypt.hash(user.password, 12);
-              user.password = hashedPassword;
-            }
-          },
-        },
       },
     );
+
+    User.beforeCreate(async (user) => {
+      await hashPassword(user);
+    });
+
+    User.beforeUpdate(async (user) => {
+      if (user.changed("password")) {
+        await hashPassword(user);
+      }
+    });
+
+    User.beforeBulkCreate(async (users) => {
+      for (let user of users) {
+        await hashPassword(user);
+      }
+    });
+
     return User;
   }
   async isValidPassword(password) {

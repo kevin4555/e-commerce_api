@@ -1,4 +1,5 @@
 const { Model, DataTypes } = require("sequelize");
+const slugify = require("slugify");
 
 class Product extends Model {
   static initModel(sequelize) {
@@ -37,7 +38,7 @@ class Product extends Model {
           },
         },
         img: {
-          type: DataTypes.STRING,
+          type: DataTypes.JSON,
           allowNull: false,
           validate: {
             notNull: { msg: "image is required" },
@@ -50,14 +51,6 @@ class Product extends Model {
           allowNull: false,
           validate: {
             notNull: { msg: "stock is required" },
-            notEmpty: true,
-          },
-        },
-        category: {
-          type: DataTypes.STRING,
-          allowNull: false,
-          validate: {
-            notNull: { msg: "category is required" },
             notEmpty: true,
           },
         },
@@ -74,7 +67,15 @@ class Product extends Model {
         modelName: "product",
       },
     );
+    Product.beforeCreate((product) => {
+      product.slug = slugify(product.title);
+    });
 
+    Product.beforeBulkCreate((products) => {
+      for (const product of products) {
+        product.slug = slugify(product.title);
+      }
+    });
     return Product;
   }
 }
