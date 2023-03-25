@@ -31,6 +31,7 @@ module.exports = async () => {
       price: 10,
       img: { img1: "Ceramica_Maceta.jpg", img2: "Ceramica_Maceta2.jpg" },
       stock: 52,
+      rating: 5,
       categoryId: 2,
     },
     {
@@ -40,6 +41,7 @@ module.exports = async () => {
       price: 30,
       img: { img1: "Pintura_Orca.avif", img2: "Pintura_Orca2.avif", img3: "Pintura_Orca3.webp" },
       stock: 2,
+      rating: 5,
       categoryId: 1,
     },
     {
@@ -53,6 +55,7 @@ module.exports = async () => {
         img3: "Pintura_Ballena3.webp",
       },
       stock: 4,
+      rating: 4,
       categoryId: 1,
     },
     {
@@ -62,6 +65,7 @@ module.exports = async () => {
       price: 250,
       img: { img1: "Pintura_Beige.avif", img2: "Pintura_Beige2.avif" },
       stock: 1,
+      rating: 5,
       categoryId: 1,
     },
     {
@@ -74,6 +78,7 @@ module.exports = async () => {
         img1: "Pintura_BlancoyNegro2.webp",
       },
       stock: 6,
+      rating: 4.5,
       categoryId: 1,
     },
     {
@@ -83,6 +88,7 @@ module.exports = async () => {
       price: 1000,
       img: { img1: "Pintura_Cabania.webp", img2: "Pintura_Cabania2.webp" },
       stock: 1,
+      rating: 5,
       categoryId: 1,
     },
     {
@@ -95,6 +101,7 @@ module.exports = async () => {
         img2: "Pintura_hipopotamo2.webp",
       },
       stock: 14,
+      rating: 3,
       categoryId: 1,
     },
     {
@@ -104,6 +111,7 @@ module.exports = async () => {
       price: 230,
       img: { img1: "Pintura_Montania.webp", img2: "Pintura_Montania2.webp" },
       stock: 4,
+      rating: 5,
       categoryId: 1,
     },
     {
@@ -113,6 +121,7 @@ module.exports = async () => {
       price: 25,
       img: { img1: "Pintura_Olas.webp", img2: "Pintura_Olas2.webp" },
       stock: 2,
+      rating: 3.5,
       categoryId: 1,
     },
     {
@@ -122,6 +131,7 @@ module.exports = async () => {
       price: 30,
       img: { img1: "Pintura_Perro.webp", img2: "Pintura_Perro2.webp", img3: "Pintura_Perro3.webp" },
       stock: 2,
+      rating: 5,
       categoryId: 1,
     },
     {
@@ -131,6 +141,7 @@ module.exports = async () => {
       price: 340,
       img: { img1: "Pintura_Warm.avif", img2: "Pintura_warm2.avif" },
       stock: 2,
+      rating: 5,
       categoryId: 1,
     },
   ];

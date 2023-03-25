@@ -61,6 +61,13 @@ class Product extends Model {
         slug: {
           type: DataTypes.STRING,
         },
+        rating: {
+          type: DataTypes.TINYINT,
+          validate: {
+            min: 0,
+            max: 5,
+          },
+        },
       },
       {
         sequelize,

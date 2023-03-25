@@ -11,6 +11,15 @@ const sequelize = new Sequelize(
   },
 );
 
+sequelize
+  .authenticate()
+  .then(() => {
+    console.log("Connection has been established successfully.");
+  })
+  .catch((error) => {
+    console.error("Unable to connect to the database: ", error);
+  });
+
 const User = require("./User");
 const Category = require("./Category");
 const Admin = require("./Admin");
