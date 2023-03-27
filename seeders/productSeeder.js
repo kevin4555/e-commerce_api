@@ -144,6 +144,96 @@ module.exports = async () => {
       rating: 5,
       categoryId: 1,
     },
+    {
+      title: "Cerámica de Conejo",
+      description:
+        "Este conejo de cerámica es una pieza de decoración adorable y llena de personalidad. Hecho de cerámica de alta calidad, este conejo tiene detalles intrincados y un acabado suave y brillante. Con su tamaño de 15 cm de altura, este conejo es perfecto para colocar en una estantería, en una mesa o en cualquier otro lugar que desees agregar un toque de encanto a tu hogar.",
+      price: 16,
+      img: { img1: "Ceramica_Conejo.webp", img2: "Ceramica_Conejo2.webp" },
+      stock: 13,
+      rating: 5,
+      categoryId: 2,
+    },
+    {
+      title: "Set para Matcha de Cerámica y Bambú",
+      description:
+        "Este set para matcha de cerámica y bambú es la manera perfecta de disfrutar de la ceremonia del té japonés en la comodidad de tu hogar. El set incluye una taza de cerámica hecha a mano con una capacidad de 300 ml, un batidor de bambú para mezclar el té matcha y una cuchara de bambú para medir la cantidad correcta de té. Todo el set está cuidadosamente hecho a mano y diseñado para ofrecer una experiencia de té auténtica y relajante.",
+      price: 55,
+      img: { img1: "Ceramica_Match.webp", img2: "Ceramica_Match2.webp" },
+      stock: 3,
+      rating: 4.6,
+      categoryId: 2,
+    },
+    {
+      title: "Taza de cerámica floreada pintada a mano",
+      description:
+        "Esta taza de cerámica floreada es una pieza de arte hermosa y única. Hecha a mano por artistas locales, cada taza es única y tiene detalles florales pintados a mano. Con su tamaño de 350 ml, esta taza es perfecta para disfrutar de tu bebida favorita y agregar un toque de belleza y elegancia a tu hora del té.",
+      price: 12,
+      img: { img1: "Ceramica_Taza.webp", img2: "Ceramica_Taza2.webp" },
+      stock: 13,
+      rating: 4.8,
+      categoryId: 2,
+    },
+    {
+      title: "Taza Cono de Cerámica",
+      description:
+        "Esta taza con forma de cono es una pieza de cerámica elegante y moderna. Hecha de cerámica de alta calidad, esta taza tiene un acabado suave y brillante y una forma única que la hace ideal para agregar un toque de originalidad a tu hogar. Con su tamaño de 250 ml, esta taza es perfecta para disfrutar de una taza de café o té.",
+      price: 33,
+      img: { img1: "Ceramica_TazaCono.webp", img2: "Ceramica_TazaCono2.webp" },
+      stock: 6,
+      rating: 4.3,
+      categoryId: 2,
+    },
+    {
+      title: "Bowl de Madera",
+      description:
+        "Este bowl de madera es una pieza de decoración natural y rústica. Hecho de madera maciza, este bowl tiene un acabado suave y un diseño simple que lo hace perfecto para complementar cualquier estilo de decoración. Con su tamaño de 25 cm de diámetro, este bowl es perfecto para servir ensaladas, frutas o cualquier otro alimento que desees presentar con estilo.",
+      price: 8,
+      img: { img1: "Madera_Bowl.webp", img2: "Madera_Bowl2.webp" },
+      stock: 22,
+      rating: 4.1,
+      categoryId: 3,
+    },
+    {
+      title: "Canasto para huevos",
+      description:
+        "Este canasto para huevos de madera es una pieza de cocina práctica y elegante. Hecho de madera maciza con una red, este canasto es perfecto para almacenar huevos frescos y agregar un toque de estilo rústico a tu cocina. Con su tamaño de 20x15 cm, este canasto es lo suficientemente grande para almacenar una docena de huevos.",
+      price: 21,
+      img: { img1: "Madera_Canastohuevos.webp", img2: "Madera_Canastohuevos2.webp" },
+      stock: 8,
+      rating: 4.9,
+      categoryId: 3,
+    },
+    {
+      title: "Chanchito miniatura de madera",
+      description:
+        "Este chanchito miniatura de madera es una pieza de decoración encantadora y llena de personalidad. Hecho a mano con madera maciza de alta calidad, este chanchito tiene detalles intrincados y un acabado suave y natural. Con su tamaño de 10 cm de largo, este chanchito es perfecto para colocar en una estantería, en una mesa o en cualquier otro lugar que desees agregar un toque de encanto a tu hogar.",
+      price: 18,
+      img: { img1: "Madera_Chanchito.webp", img2: "Madera_Chanchito2.webp" },
+      stock: 7,
+      rating: 5,
+      categoryId: 3,
+    },
+    {
+      title: "Estantería modular de madera",
+      description:
+        "Esta estantería modular de madera es una pieza de mobiliario práctica y versátil. Hecha de madera maciza de alta calidad, esta estantería cuenta con estantes y varillas que puedes personalizar para adaptarla a tus necesidades de almacenamiento. Con su diseño minimalista y elegante, esta estantería es perfecta para cualquier espacio de tu hogar.",
+      price: 16,
+      img: { img1: "Madera_Estantería.webp", img2: "Madera_Estantería2.webp" },
+      stock: 3,
+      rating: 4.9,
+      categoryId: 3,
+    },
+    {
+      title: "Portallaves de madera",
+      description:
+        "Este portallaves de madera es una pieza de organización práctica y elegante. Hecho a mano con madera maciza de alta calidad, este portallaves cuenta con ganchos de metal para colgar tus llaves de manera segura y organizada. Con su diseño minimalista y elegante, este portallaves es perfecto para cualquier espacio de tu hogar donde desees mantener tus llaves organizadas y accesibles.",
+      price: 16,
+      img: { img1: "Madera_Portallaves.webp", img2: "Madera_Portallaves2.webp" },
+      stock: 23,
+      rating: 4.7,
+      categoryId: 3,
+    },
   ];
   await Product.bulkCreate(products);
   console.log("[Database] Se corrió el seeder de Products.");
