@@ -36,6 +36,12 @@ module.exports = async () => {
     {
       name: "Muebles",
     },
+    {
+      name: "Tejidos",
+    },
+    {
+      name: "Decoraciones",
+    },
   ];
 
   await Category.bulkCreate(categories);

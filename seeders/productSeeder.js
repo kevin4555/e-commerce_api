@@ -234,6 +234,96 @@ module.exports = async () => {
       rating: 4.7,
       categoryId: 3,
     },
+    {
+      title: "Peluche Beagle",
+      description:
+        "Este portallaves de madera es una pieza de organización práctica y elegante. Hecho a mano con madera maciza de alta calidad, este portallaves cuenta con ganchos de metal para colgar tus llaves de manera segura y organizada. Con su diseño minimalista y elegante, este portallaves es perfecto para cualquier espacio de tu hogar donde desees mantener tus llaves organizadas y accesibles.",
+      price: 22,
+      img: { img1: "Tejido_Beagle.webp", img2: "Tejido_Beagle2.webp" },
+      stock: 3,
+      rating: 4.8,
+      categoryId: 4,
+    },
+    {
+      title: "Botitas para bebé",
+      description:
+        "Este portallaves de madera es una pieza de organización práctica y elegante. Hecho a mano con madera maciza de alta calidad, este portallaves cuenta con ganchos de metal para colgar tus llaves de manera segura y organizada. Con su diseño minimalista y elegante, este portallaves es perfecto para cualquier espacio de tu hogar donde desees mantener tus llaves organizadas y accesibles.",
+      price: 18,
+      img: { img1: "Tejido_Botitas.avif", img2: "Tejido_Botitas2.avif" },
+      stock: 3,
+      rating: 4.9,
+      categoryId: 4,
+    },
+    {
+      title: "Conejo de peluche",
+      description:
+        "Este portallaves de madera es una pieza de organización práctica y elegante. Hecho a mano con madera maciza de alta calidad, este portallaves cuenta con ganchos de metal para colgar tus llaves de manera segura y organizada. Con su diseño minimalista y elegante, este portallaves es perfecto para cualquier espacio de tu hogar donde desees mantener tus llaves organizadas y accesibles.",
+      price: 33,
+      img: { img1: "Tejido_Conejo.avif", img2: "Tejido_Conejo2.avif" },
+      stock: 23,
+      rating: 5,
+      categoryId: 4,
+    },
+    {
+      title: "Peluche Elefante",
+      description:
+        "Este portallaves de madera es una pieza de organización práctica y elegante. Hecho a mano con madera maciza de alta calidad, este portallaves cuenta con ganchos de metal para colgar tus llaves de manera segura y organizada. Con su diseño minimalista y elegante, este portallaves es perfecto para cualquier espacio de tu hogar donde desees mantener tus llaves organizadas y accesibles.",
+      price: 18,
+      img: { img1: "Tejido_Elefante.webp", img2: "Tejido_Elefante2.avif" },
+      stock: 15,
+      rating: 4.9,
+      categoryId: 4,
+    },
+    {
+      title: "Peluche Gallina",
+      description:
+        "Este portallaves de madera es una pieza de organización práctica y elegante. Hecho a mano con madera maciza de alta calidad, este portallaves cuenta con ganchos de metal para colgar tus llaves de manera segura y organizada. Con su diseño minimalista y elegante, este portallaves es perfecto para cualquier espacio de tu hogar donde desees mantener tus llaves organizadas y accesibles.",
+      price: 18,
+      img: { img1: "Tejido_Gallina.avif", img2: "Tejido_Gallina2.avif" },
+      stock: 1,
+      rating: 4.9,
+      categoryId: 4,
+    },
+    {
+      title: "Peluche Gato",
+      description:
+        "Este portallaves de madera es una pieza de organización práctica y elegante. Hecho a mano con madera maciza de alta calidad, este portallaves cuenta con ganchos de metal para colgar tus llaves de manera segura y organizada. Con su diseño minimalista y elegante, este portallaves es perfecto para cualquier espacio de tu hogar donde desees mantener tus llaves organizadas y accesibles.",
+      price: 29,
+      img: { img1: "Tejido_Gato.webp", img2: "Tejido_Gato2.webp" },
+      stock: 3,
+      rating: 4.8,
+      categoryId: 4,
+    },
+    {
+      title: "Peluche Pato",
+      description:
+        "Este portallaves de madera es una pieza de organización práctica y elegante. Hecho a mano con madera maciza de alta calidad, este portallaves cuenta con ganchos de metal para colgar tus llaves de manera segura y organizada. Con su diseño minimalista y elegante, este portallaves es perfecto para cualquier espacio de tu hogar donde desees mantener tus llaves organizadas y accesibles.",
+      price: 13,
+      img: { img1: "Tejido_Pato.avif", img2: "Tejido_Pato2.avif" },
+      stock: 31,
+      rating: 4.7,
+      categoryId: 4,
+    },
+    {
+      title: "Peluche Pingüino",
+      description:
+        "Este portallaves de madera es una pieza de organización práctica y elegante. Hecho a mano con madera maciza de alta calidad, este portallaves cuenta con ganchos de metal para colgar tus llaves de manera segura y organizada. Con su diseño minimalista y elegante, este portallaves es perfecto para cualquier espacio de tu hogar donde desees mantener tus llaves organizadas y accesibles.",
+      price: 19,
+      img: { img1: "Tejido_Pinguino.avif", img2: "Tejido_Pinguino2.avif" },
+      stock: 9,
+      rating: 5,
+      categoryId: 4,
+    },
+    {
+      title: "Peluche Rana",
+      description:
+        "Este portallaves de madera es una pieza de organización práctica y elegante. Hecho a mano con madera maciza de alta calidad, este portallaves cuenta con ganchos de metal para colgar tus llaves de manera segura y organizada. Con su diseño minimalista y elegante, este portallaves es perfecto para cualquier espacio de tu hogar donde desees mantener tus llaves organizadas y accesibles.",
+      price: 18,
+      img: { img1: "Tejido_Rana.webp", img2: "Tejido_rana2.webp" },
+      stock: 18,
+      rating: 4.9,
+      categoryId: 4,
+    },
   ];
   await Product.bulkCreate(products);
   console.log("[Database] Se corrió el seeder de Products.");
