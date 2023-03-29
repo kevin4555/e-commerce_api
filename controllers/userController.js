@@ -1,4 +1,5 @@
 const { User } = require("../models");
+const jwt = require("jsonwebtoken");
 
 // Display a listing of the resource.
 async function index(req, res) {
@@ -15,6 +16,28 @@ async function index(req, res) {
     return res.status(500).json({
       message: "Internal Server Error",
     });
+  }
+}
+
+async function token(req, res) {
+  try {
+    let user = await User.findOne({ where: { email: req.body.email } });
+
+    if (!user) {
+      throw new Error();
+    } else if (await user.isValidPassword(req.body.password)) {
+      user = user.dataValues;
+      const token = jwt.sign({ email: user.email, id: user.id }, process.env.API_SECRET);
+      delete user.password;
+      return res.status(200).json({
+        token,
+        ...user,
+      });
+    } else {
+      throw new Error();
+    }
+  } catch (error) {
+    res.status(404).json({ message: "Credenciales incorrectas" });
   }
 }
 
@@ -59,6 +82,7 @@ module.exports = {
   create,
   store,
   edit,
+  token,
   update,
   destroy,
 };
