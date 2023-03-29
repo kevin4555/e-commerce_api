@@ -8,9 +8,6 @@ class Admin extends Model {
           type: DataTypes.BIGINT.UNSIGNED,
           primaryKey: true,
           autoIncrement: true,
-          set() {
-            throw new Error("Do not try to set the id value!");
-          },
         },
         firstname: {
           type: DataTypes.STRING,

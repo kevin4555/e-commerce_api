@@ -8,9 +8,6 @@ class Order extends Model {
           type: DataTypes.BIGINT.UNSIGNED,
           primaryKey: true,
           autoIncrement: true,
-          set() {
-            throw new Error("Do not try to set the id value!");
-          },
         },
         status: {
           type: DataTypes.STRING,

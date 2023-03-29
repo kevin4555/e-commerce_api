@@ -37,9 +37,8 @@ module.exports = async () => {
       email: faker.internet.email(firstname, lastname, "gmail.com"),
       address: faker.helpers.fake(`${faker.address.city()}, ${faker.address.streetAddress()}`),
       password: "1234",
-      phone: faker.phone.number("+5989#######"),
+      phone: faker.phone.number("09#######"),
       avatar: "",
-      birthdate: faker.date.birthdate(),
     });
   }
 
