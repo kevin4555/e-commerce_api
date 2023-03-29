@@ -22,7 +22,6 @@ async function index(req, res) {
 async function token(req, res) {
   try {
     let user = await User.findOne({ where: { email: req.body.email } });
-
     if (!user) {
       throw new Error();
     } else if (await user.isValidPassword(req.body.password)) {
