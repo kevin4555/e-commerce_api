@@ -5,6 +5,7 @@
 
 const userRoutes = require("./userRoutes");
 const productRoutes = require("./productRoutes");
+const categoryRoutes = require("./categoryRoutes");
 
 //const commentRoutes = require("./commentRoutes");
 
@@ -31,6 +32,7 @@ module.exports = (app) => {
 
   app.use("/users", userRoutes);
   app.use("/products", productRoutes);
+  app.use("/categories", categoryRoutes);
 
   app.use("/", publicRoutes);
   app.use("/panel", privateRoutes);
