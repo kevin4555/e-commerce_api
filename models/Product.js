@@ -27,7 +27,7 @@ class Product extends Model {
           },
         },
         price: {
-          type: DataTypes.FLOAT,
+          type: DataTypes.DECIMAL,
           allowNull: false,
           validate: {
             notNull: { msg: "price is required" },
