@@ -1,4 +1,5 @@
 const { User } = require("../models");
+const formidable = require("formidable");
 const jwt = require("jsonwebtoken");
 
 // Display a listing of the resource.
@@ -61,7 +62,29 @@ async function show(req, res) {
 async function create(req, res) {}
 
 // Store a newly created resource in storage.
-async function store(req, res) {}
+async function store(req, res) {
+  const form = formidable({
+    multiples: true,
+    uploadDir: __dirname + "/../public/img",
+    keepExtensions: true,
+  });
+  form.parse(req, async (err, fields, files) => {
+    try {
+      await User.create({
+        firstname: fields.firstname,
+        lastname: fields.lastname,
+        email: fields.email,
+        phone: fields.phone,
+        address: fields.address,
+        password: fields.password,
+        avatar: files.avatar.newFilename,
+      });
+      return res.status(200).json({ message: "User Created" });
+    } catch (error) {
+      return res.status(501).json(error);
+    }
+  });
+}
 
 // Show the form for editing the specified resource.
 async function edit(req, res) {}

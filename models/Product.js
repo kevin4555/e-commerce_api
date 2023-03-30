@@ -9,9 +9,6 @@ class Product extends Model {
           type: DataTypes.BIGINT.UNSIGNED,
           primaryKey: true,
           autoIncrement: true,
-          set() {
-            throw new Error("Do not try to set the id value!");
-          },
         },
         title: {
           type: DataTypes.STRING,
@@ -30,7 +27,7 @@ class Product extends Model {
           },
         },
         price: {
-          type: DataTypes.FLOAT,
+          type: DataTypes.DECIMAL,
           allowNull: false,
           validate: {
             notNull: { msg: "price is required" },

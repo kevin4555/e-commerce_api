@@ -13,9 +13,6 @@ class User extends Model {
           type: DataTypes.BIGINT.UNSIGNED,
           primaryKey: true,
           autoIncrement: true,
-          set() {
-            throw new Error("Do not try to set the id value!");
-          },
         },
         firstname: {
           type: DataTypes.STRING,
@@ -69,14 +66,6 @@ class User extends Model {
         },
         avatar: {
           type: DataTypes.STRING,
-        },
-        birthdate: {
-          type: DataTypes.DATE,
-          allowNull: false,
-          validate: {
-            notNull: { msg: "birthdate is required" },
-            isDate: true,
-          },
         },
       },
       {
