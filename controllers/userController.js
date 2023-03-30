@@ -90,10 +90,50 @@ async function store(req, res) {
 async function edit(req, res) {}
 
 // Update the specified resource in storage.
-async function update(req, res) {}
+async function update(req, res) {
+  const form = formidable({
+    multiples: true,
+    uploadDir: __dirname + "/public/img",
+    keepExtensions: true,
+  });
+  try {
+    form.parse(req, async (err, fields, files) => {
+      await User.update(
+        {
+          firstname: fields.firstname,
+          lastname: fields.lastname,
+          email: fields.email,
+          phone: fields.phone,
+          address: fields.address,
+          password: fields.password,
+          avatar: files.avatar.newFilename,
+        },
+        {
+          where: {
+            id: req.params.id,
+          },
+        },
+      );
+    });
+    return res.status(201).json({ message: "User Updated" });
+  } catch (error) {
+    return res.status(501).json({
+      message: "Not Found",
+    });
+  }
+}
 
 // Remove the specified resource from storage.
-async function destroy(req, res) {}
+async function destroy(req, res) {
+  try {
+    await User.destroy({ where: { id: req.params.id } });
+    return res.status(201).json({ message: "User Deleted" });
+  } catch (error) {
+    return res.status(404).json({
+      message: "Not Found",
+    });
+  }
+}
 
 // Otros handlers...
 // ...

@@ -4,7 +4,6 @@ const { Category } = require("../models");
 async function index(req, res) {
   try {
     const categories = await Category.findAll({ raw: true, nest: true });
-    console.log("cat", categories);
     if (!categories) {
       throw new Error();
     }
@@ -17,22 +16,74 @@ async function index(req, res) {
 }
 
 // Display the specified resource.
-async function show(req, res) {}
+async function show(req, res) {
+  try {
+    const category = await Category.findByPk(req.params.id, { raw: true, nest: true });
+    if (category) {
+      return res.status(200).json(category);
+    } else {
+      throw new Error();
+    }
+  } catch (error) {
+    return res.status(404).json({
+      message: "Not Found",
+    });
+  }
+}
 
 // Show the form for creating a new resource
 async function create(req, res) {}
 
 // Store a newly created resource in storage.
-async function store(req, res) {}
+async function store(req, res) {
+  try {
+    await Category.create({
+      name: req.body.name,
+    });
+
+    return res.status(201).json({ message: "Product Created" });
+  } catch (error) {
+    return res.status(501).json({
+      message: "Not Found",
+    });
+  }
+}
 
 // Show the form for editing the specified resource.
 async function edit(req, res) {}
 
 // Update the specified resource in storage.
-async function update(req, res) {}
+async function update(req, res) {
+  try {
+    await Category.update(
+      {
+        name: req.body.name,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      },
+    );
+    return res.status(201).json({ message: "Product Updated" });
+  } catch (error) {
+    return res.status(501).json({
+      message: "Not Found",
+    });
+  }
+}
 
 // Remove the specified resource from storage.
-async function destroy(req, res) {}
+async function destroy(req, res) {
+  try {
+    await Category.destroy({ where: { id: req.params.id } });
+    return res.status(201).json({ message: "Category Deleted" });
+  } catch (error) {
+    return res.status(404).json({
+      message: "Not Found",
+    });
+  }
+}
 
 // Otros handlers...
 // ...
