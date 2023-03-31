@@ -1,6 +1,8 @@
-const { User } = require("../models");
+const { User, Admin } = require("../models");
 const formidable = require("formidable");
 const jwt = require("jsonwebtoken");
+const { findOne, findByPk } = require("../models/User");
+const { where } = require("sequelize");
 
 // Display a listing of the resource.
 async function index(req, res) {
@@ -58,9 +60,6 @@ async function show(req, res) {
   }
 }
 
-// Show the form for creating a new resource
-async function create(req, res) {}
-
 // Store a newly created resource in storage.
 async function store(req, res) {
   const form = formidable({
@@ -87,19 +86,23 @@ async function store(req, res) {
 }
 
 // Show the form for editing the specified resource.
-async function edit(req, res) {}
 
 // Update the specified resource in storage.
 async function update(req, res) {
-  const form = formidable({
-    multiples: true,
-    uploadDir: __dirname + "/public/img",
-    keepExtensions: true,
-  });
-  try {
+  let user = await User.findOne({ where: { id: req.auth.id, email: req.auth.email } });
+  let authuser = user && user.id === req.params.id;
+  if (authuser || (await Admin.findOne({ where: { id: req.auth.id, email: req.auth.email } }))) {
+    if (!authuser) {
+      user = await User.findByPk(req.params.id);
+    }
+    const form = formidable({
+      multiples: true,
+      uploadDir: __dirname + "/../public/img",
+      keepExtensions: true,
+    });
     form.parse(req, async (err, fields, files) => {
-      await User.update(
-        {
+      try {
+        await User.create({
           firstname: fields.firstname,
           lastname: fields.lastname,
           email: fields.email,
@@ -107,19 +110,14 @@ async function update(req, res) {
           address: fields.address,
           password: fields.password,
           avatar: files.avatar.newFilename,
-        },
-        {
-          where: {
-            id: req.params.id,
-          },
-        },
-      );
+        });
+        return res.status(200).json({ message: "User Created" });
+      } catch (error) {
+        return res.status(501).json(error);
+      }
     });
-    return res.status(201).json({ message: "User Updated" });
-  } catch (error) {
-    return res.status(501).json({
-      message: "Not Found",
-    });
+  } else {
+    return res.status(401).json({ msg: "No tienes la Autorización" });
   }
 }
 
@@ -141,9 +139,7 @@ async function destroy(req, res) {
 module.exports = {
   index,
   show,
-  create,
   store,
-  edit,
   token,
   update,
   destroy,

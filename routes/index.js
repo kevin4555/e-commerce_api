@@ -30,7 +30,9 @@ module.exports = (app) => {
    * nombres de variables, funciones, etc, que siempre se recomienda que estén
    * en inglés.
    */
-
+  app.get("/", (req, res) => {
+    res.send("Working");
+  });
   app.use("/users", userRoutes);
   app.use("/products", productRoutes);
   app.use("/categories", categoryRoutes);
