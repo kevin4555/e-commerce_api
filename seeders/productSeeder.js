@@ -219,7 +219,7 @@ module.exports = async () => {
       description:
         "Esta estantería modular de madera es una pieza de mobiliario práctica y versátil. Hecha de madera maciza de alta calidad, esta estantería cuenta con estantes y varillas que puedes personalizar para adaptarla a tus necesidades de almacenamiento. Con su diseño minimalista y elegante, esta estantería es perfecta para cualquier espacio de tu hogar.",
       price: 16,
-      img: { img1: "Madera_Estantería.webp", img2: "Madera_Estantería2.webp" },
+      img: { img1: "Madera_Estanteria.webp", img2: "Madera_Estanteria2.webp" },
       stock: 3,
       rating: 4.9,
       categoryId: 3,
