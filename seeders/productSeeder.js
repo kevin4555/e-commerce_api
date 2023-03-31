@@ -63,7 +63,7 @@ module.exports = async () => {
       description:
         "Esta pintura abstracta en tonos beige es una obra de arte moderna y sofisticada. Con su uso audaz del color y su estilo abstracto, esta pintura es una representación impresionante de la creatividad y la originalidad. Con su tamaño de 40x60 cm, esta pintura es perfecta para adornar una pared en tu hogar o en tu oficina.",
       price: 250,
-      img: { img1: "Pintura_Beige.avif", img2: "Pintura_Beige2.avif" },
+      img: { img1: "Pintura_beige.avif", img2: "Pintura_beige2.avif" },
       stock: 1,
       rating: 5,
       categoryId: 1,
@@ -319,7 +319,7 @@ module.exports = async () => {
       description:
         "Este portallaves de madera es una pieza de organización práctica y elegante. Hecho a mano con madera maciza de alta calidad, este portallaves cuenta con ganchos de metal para colgar tus llaves de manera segura y organizada. Con su diseño minimalista y elegante, este portallaves es perfecto para cualquier espacio de tu hogar donde desees mantener tus llaves organizadas y accesibles.",
       price: 18,
-      img: { img1: "Tejido_Rana.webp", img2: "Tejido_rana2.webp" },
+      img: { img1: "Tejido_Rana.webp", img2: "Tejido_Rana2.webp" },
       stock: 18,
       rating: 4.9,
       categoryId: 4,
