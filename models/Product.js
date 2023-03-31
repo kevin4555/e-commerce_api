@@ -64,6 +64,7 @@ class Product extends Model {
             min: 0,
             max: 5,
           },
+          defaultValue: 0,
         },
       },
       {
