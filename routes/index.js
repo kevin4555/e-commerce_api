@@ -37,5 +37,5 @@ module.exports = (app) => {
   app.use("/reviews", reviewRoutes);
 
   app.use("/", publicRoutes);
-  app.use("/panel", privateRoutes);
+  app.use("/admin", privateRoutes);
 };
