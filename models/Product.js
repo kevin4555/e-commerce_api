@@ -44,7 +44,7 @@ class Product extends Model {
           defaultValue: "img",
         },
         stock: {
-          type: DataTypes.TINYINT,
+          type: DataTypes.INTEGER,
           allowNull: false,
           validate: {
             notNull: { msg: "stock is required" },
@@ -59,7 +59,7 @@ class Product extends Model {
           type: DataTypes.STRING,
         },
         rating: {
-          type: DataTypes.TINYINT,
+          type: DataTypes.DECIMAL,
           validate: {
             min: 0,
             max: 5,
