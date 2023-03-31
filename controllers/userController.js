@@ -78,6 +78,9 @@ async function store(req, res) {
         password: fields.password,
         avatar: files.avatar.newFilename,
       });
+      /* const { data, error } = await supabase.storage
+        .from("images")
+        .upload(files.avatar.newFilename, avatarFile); */
       return res.status(200).json({ message: "User Created" });
     } catch (error) {
       return res.status(501).json(error);
