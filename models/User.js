@@ -66,6 +66,7 @@ class User extends Model {
         },
         avatar: {
           type: DataTypes.STRING,
+          allowNull: false,
         },
       },
       {
@@ -94,6 +95,11 @@ class User extends Model {
   }
   async isValidPassword(password) {
     return await bcrypt.compare(password, this.password);
+  }
+  toJSON() {
+    const values = { ...this.get() };
+    delete values.password;
+    return values;
   }
 }
 

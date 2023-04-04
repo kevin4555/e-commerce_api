@@ -29,7 +29,8 @@
     "react-router-dom": "^6.9.0",
     "sequelize": "^6.28.0",
     "slugify": "^1.6.5",
-    "sqlite3": "^5.0.8"
+    "sqlite3": "^5.0.8",
+    "uuid": "^9.0.0"
   },
   "description": "Kevin Lapizaga Nicolás Ross Maia Chamorro Sebastián Wajshan",
   "devDependencies": {

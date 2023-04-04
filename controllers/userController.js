@@ -3,6 +3,12 @@ const formidable = require("formidable");
 const jwt = require("jsonwebtoken");
 const { findOne, findByPk } = require("../models/User");
 const { where } = require("sequelize");
+const { createClient } = require("@supabase/supabase-js");
+const fs = require("fs");
+const path = require("path");
+const { v4: uuidv4 } = require("uuid");
+
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
 // Display a listing of the resource.
 async function index(req, res) {
@@ -28,12 +34,10 @@ async function token(req, res) {
     if (!user) {
       throw new Error();
     } else if (await user.isValidPassword(req.body.password)) {
-      user = user.dataValues;
       const token = jwt.sign({ email: user.email, id: user.id }, process.env.API_SECRET);
-      delete user.password;
       return res.status(200).json({
         token,
-        ...user,
+        user,
       });
     } else {
       throw new Error();
@@ -64,25 +68,36 @@ async function show(req, res) {
 async function store(req, res) {
   const form = formidable({
     multiples: true,
-    uploadDir: __dirname + "/../public/img",
     keepExtensions: true,
   });
   form.parse(req, async (err, fields, files) => {
     try {
-      await User.create({
+      const ext = path.extname(files.avatar.filepath);
+      const newFileName = `profile_${uuidv4()}${ext}`;
+      const user = await User.create({
         firstname: fields.firstname,
         lastname: fields.lastname,
         email: fields.email,
         phone: fields.phone,
         address: fields.address,
         password: fields.password,
-        avatar: files.avatar.newFilename,
+        avatar: newFileName,
       });
-      /* const { data, error } = await supabase.storage
+      const { data, error } = await supabase.storage
         .from("images")
-        .upload(files.avatar.newFilename, avatarFile); */
-      return res.status(200).json({ message: "User Created" });
+        .upload(newFileName, fs.createReadStream(files.avatar.filepath), {
+          cacheControl: "3600",
+          upsert: false,
+          contentType: files.avatar.mimetype,
+        });
+      const token = jwt.sign({ email: user.email, id: user.id }, process.env.API_SECRET);
+      return res.status(200).json({
+        token,
+        user,
+      });
     } catch (error) {
+      //Analizar error imagen o user
+      console.log(error);
       return res.status(501).json(error);
     }
   });

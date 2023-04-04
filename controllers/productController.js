@@ -4,8 +4,9 @@ const formidable = require("formidable");
 // Display a listing of the resource.
 async function index(req, res) {
   try {
-    const products = await Product.findAll({ raw: true, nest: true });
+    const products = await Product.findAll();
     if (!products) {
+      //Analizar
       throw new Error();
     }
     return res.json(products);
@@ -59,7 +60,7 @@ async function store(req, res) {
     return res.status(201).json({ message: "Product Created" });
   } catch (error) {
     return res.status(501).json({
-      message: "Not Found",
+      message: "Internal Server Error",
     });
   }
 }
@@ -71,7 +72,7 @@ async function edit(req, res) {}
 async function update(req, res) {
   const form = formidable({
     multiples: true,
-    uploadDir: __dirname + "/public/img",
+    uploadDir: __dirname + "/../public/img",
     keepExtensions: true,
   });
   try {
