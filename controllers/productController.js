@@ -39,7 +39,7 @@ async function create(req, res) {}
 async function store(req, res) {
   const form = formidable({
     multiples: true,
-    uploadDir: __dirname + "/public/img",
+    uploadDir: __dirname + "/../public/img",
     keepExtensions: true,
   });
   try {
@@ -48,7 +48,7 @@ async function store(req, res) {
         title: fields.title,
         description: fields.description,
         price: fields.price,
-        img: files.img.newFilename,
+        img: { img1: files.img.newFilename },
         stock: fields.stock,
         featured: fields.featured,
         slug: fields.slug,

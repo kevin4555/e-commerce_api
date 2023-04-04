@@ -38,7 +38,7 @@ async function create(req, res) {}
 async function store(req, res) {
   try {
     await Category.create({
-      name: req.body.name,
+      name: req.body.categoryName,
     });
 
     return res.status(201).json({ message: "Product Created" });
