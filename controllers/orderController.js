@@ -23,21 +23,21 @@ async function create(req, res) {}
 
 // Store a newly created resource in storage.
 async function store(req, res) {
-  const { cart, userId } = req.body;
-  /*   try { */
-  await Order.create({
-    status: "Procesando",
-    address: { a: "a" },
-    products: { items: [...cart.items] },
-    totalPrice: cart.totalPrice,
-    userId,
-  });
-  return res.status(201).json({ message: "Order Created" });
-  /*   } catch (error) {
+  const { items, totalPrice, address, userId } = req.body;
+  try {
+    await Order.create({
+      status: "Procesando",
+      address: { ...address },
+      products: { items: [...items] },
+      totalPrice: totalPrice,
+      userId,
+    });
+    return res.status(201).json({ message: "Order Created" });
+  } catch (error) {
     return res.status(501).json({
       message: "Not Found",
     });
-  } */
+  }
 }
 
 // Show the form for editing the specified resource.

@@ -69,9 +69,10 @@ async function edit(req, res) {}
 
 // Update the specified resource in storage.
 async function update(req, res) {
+  console.log(req.params);
   const form = formidable({
     multiples: true,
-    uploadDir: __dirname + "/public/img",
+    uploadDir: __dirname + "/../public/img",
     keepExtensions: true,
   });
   try {
@@ -81,7 +82,7 @@ async function update(req, res) {
           title: fields.title,
           description: fields.description,
           price: fields.price,
-          img: files.img.newFilename,
+          img: { img1: files.img.newFilename },
           stock: fields.stock,
           featured: fields.featured,
           slug: fields.slug,
