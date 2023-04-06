@@ -11,6 +11,8 @@ router.get("/", productController.index);
 router.post("/", productController.store);
 router.get("/:slug", productController.show);
 
+router.patch("/reset", productController.reset);
+
 router.patch("/:id", productController.update);
 router.delete("/:id", productController.destroy);
 router.patch(
