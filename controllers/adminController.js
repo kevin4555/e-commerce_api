@@ -20,7 +20,16 @@ async function edit(req, res) {}
 async function update(req, res) {}
 
 // Remove the specified resource from storage.
-async function destroy(req, res) {}
+async function destroy(req, res) {
+  try {
+    await Admin.destroy({ where: { id: req.params.id } });
+    return res.status(201).json({ message: "Admin Deleted" });
+  } catch (error) {
+    return res.status(404).json({
+      message: "Not Found",
+    });
+  }
+}
 
 // Otros handlers...
 // ...
