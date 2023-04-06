@@ -59,7 +59,7 @@ class Product extends Model {
           type: DataTypes.STRING,
         },
         rating: {
-          type: DataTypes.DECIMAL,
+          type: DataTypes.DECIMAL(10, 1),
           validate: {
             min: 0,
             max: 5,
