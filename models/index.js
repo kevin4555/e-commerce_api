@@ -48,6 +48,9 @@ Product.belongsTo(Category);
 User.hasMany(Review);
 Review.belongsTo(User);
 
+Product.hasMany(Review);
+Review.belongsTo(Product);
+
 module.exports = {
   sequelize,
   User,
