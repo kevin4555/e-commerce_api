@@ -42,15 +42,15 @@ module.exports = async () => {
     });
   }
 
-  users.push({
-    firstname: "Juan",
-    lastname: "Pérez",
-    email: "user@1234.com",
-    password: "1234",
-    address: faker.helpers.fake(`${faker.address.city()}, ${faker.address.streetAddress()}`),
-    phone: faker.phone.number("09#######"),
-    avatar: "Profile_default.png",
-  });
+  // users.push({
+  //   firstname: "Juan",
+  //   lastname: "Pérez",
+  //   email: "user@1234.com",
+  //   password: "1234",
+  //   address: faker.helpers.fake(`${faker.address.city()}, ${faker.address.streetAddress()}`),
+  //   phone: faker.phone.number("09#######"),
+  //   avatar: "Profile_default.png",
+  // });
 
   await User.bulkCreate(users);
   console.log("[Database] Se corrió el seeder de Users.");

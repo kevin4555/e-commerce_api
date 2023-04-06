@@ -121,14 +121,14 @@ async function destroy(req, res) {
 // Reset database
 async function reset(req, res) {
   try {
-    // await require("../createDatabaseTables")();
+    await require("../createDatabaseTables")();
     await require("../seeders/categorySeeder")();
     await require("../seeders/userSeeder")();
     await require("../seeders/productSeeder")();
     await require("../seeders/adminSeeder")();
-    console.log("[Database] ¡Los dssssatos de prueba fueron insertados!");
-    console.log("aaaa");
-    return res.status(201).json({ message: "Database reset successfully" });
+    return res.status(501).json({
+      message: "Unable to reset database",
+    });
   } catch (error) {
     return res.status(501).json({
       message: "Unable to reset database",

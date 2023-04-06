@@ -36,5 +36,5 @@ module.exports = async () => {
   }
 
   await Review.bulkCreate(reviews);
-  console.log("[Database] Se corrió el seeder de Articles.");
+  return console.log("[Database] Se corrió el seeder de Articles.");
 };

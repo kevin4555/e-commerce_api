@@ -24,3 +24,8 @@ async function createDatabaseTables() {
 }
 
 createDatabaseTables();
+
+module.exports = async function resetTables() {
+  await db.sequelize.sync({ force: true });
+  console.log("[Database] ¡Las tablas fueron creadas!");
+};
