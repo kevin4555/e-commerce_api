@@ -20,7 +20,6 @@ async function index(req, res) {
 // Display the specified resource.
 async function show(req, res) {
   try {
-    console.log("aaaa");
     const product = await Product.findOne({ where: { slug: req.params.slug } });
     if (product) {
       return res.status(200).json(product);
