@@ -8,7 +8,7 @@ var { expressjwt: checkjwt } = require("express-jwt");
 
 router.post("/tokens", userController.token);
 router.post("/resetpassword", userController.sendMail);
-router.get(
+router.put(
   "/resetpassword",
   checkjwt({ secret: process.env.API_SECRET, algorithms: ["HS256"] }),
   userController.resetPassword,

@@ -75,7 +75,20 @@ async function sendMail(req, res) {
 
 async function resetPassword(req, res) {
   try {
-  } catch (error) {}
+    const user = await User.findOne({ where: { email: req.auth.email, id: req.auth.id } });
+    if (!user) {
+      throw new Error("Not Found");
+    }
+    await user.update({ password: req.body.password });
+    const token = jwt.sign({ email: user.email, id: user.id }, process.env.API_SECRET);
+    return res.status(200).json({
+      token,
+      user,
+    });
+  } catch (error) {
+    console.log(error);
+    return res.status(404).json(error);
+  }
 }
 
 // Display the specified resource.
@@ -83,15 +96,12 @@ async function show(req, res) {
   try {
     const user = await User.findByPk(req.params.id, { raw: true, nest: true });
     if (user) {
-      delete user.password;
       return res.status(200).json(user);
     } else {
-      throw new Error();
+      throw new Error("Not Found");
     }
   } catch (error) {
-    return res.status(404).json({
-      message: "Not Found",
-    });
+    return res.status(404).json(error);
   }
 }
 
