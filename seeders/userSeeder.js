@@ -47,6 +47,9 @@ module.exports = async () => {
     lastname: "Pérez",
     email: "user@1234.com",
     password: "1234",
+    address: faker.helpers.fake(`${faker.address.city()}, ${faker.address.streetAddress()}`),
+    phone: faker.phone.number("09#######"),
+    avatar: "Profile_default.png",
   });
 
   await User.bulkCreate(users);
