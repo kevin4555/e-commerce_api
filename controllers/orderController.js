@@ -2,6 +2,7 @@ const { Order } = require("../models");
 
 // Display a listing of the resource.
 async function index(req, res) {
+  console.log("req.params");
   try {
     const orders = await Order.findAll({ raw: true, nest: true });
     if (!orders) {

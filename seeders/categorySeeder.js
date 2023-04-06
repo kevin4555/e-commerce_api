@@ -28,19 +28,24 @@ faker.locale = "es";
 module.exports = async () => {
   const categories = [
     {
-      name: "Pintura",
+      name: "Pinturas",
+      img: "Pintura_beige.avif",
     },
     {
-      name: "Ceramica",
+      name: "Cerámicas",
+      img: "Ceramica_Conejo.webp",
     },
     {
-      name: "Muebles",
+      name: "Maderas",
+      img: "Madera_Bowl.webp",
     },
     {
       name: "Tejidos",
+      img: "Tejido_Beagle.webp",
     },
     {
       name: "Decoraciones",
+      img: "Ceramica_Taza.webp",
     },
   ];
 

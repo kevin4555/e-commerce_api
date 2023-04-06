@@ -54,7 +54,6 @@ async function edit(req, res) {}
 
 // Update the specified resource in storage.
 async function update(req, res) {
-  console.log("1", req.body);
   try {
     await Category.update(
       {

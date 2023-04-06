@@ -17,6 +17,15 @@ class Category extends Model {
             notEmpty: true,
           },
         },
+        img: {
+          type: DataTypes.JSON,
+          allowNull: false,
+          validate: {
+            notNull: { msg: "image is required" },
+            notEmpty: true,
+          },
+          defaultValue: "img",
+        },
       },
       {
         sequelize,
