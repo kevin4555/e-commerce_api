@@ -38,7 +38,7 @@ module.exports = async () => {
       address: faker.helpers.fake(`${faker.address.city()}, ${faker.address.streetAddress()}`),
       password: "1234",
       phone: faker.phone.number("09#######"),
-      avatar: "Profile_default.png",
+      avatar: "Profile_default.pn",
     });
   }
 
