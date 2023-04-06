@@ -37,13 +37,14 @@ async function create(req, res) {}
 // Store a newly created resource in storage.
 async function store(req, res) {
   try {
-    await Review.create({
+    const review = await Review.create({
       content: req.body.content,
-      userId: req.body.userId,
+      userId: req.auth.id,
+      productId: req.body.productId,
     });
-
-    return res.status(201).json({ message: "Review Created" });
+    return res.status(201).json(review);
   } catch (error) {
+    console.log(error);
     return res.status(501).json({
       message: "Not Found",
     });
