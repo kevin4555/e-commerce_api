@@ -7,7 +7,8 @@ const { createClient } = require("@supabase/supabase-js");
 const fs = require("fs");
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
-
+const { log } = require("console");
+const transporter = require("./../transporter");
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
 // Display a listing of the resource.
@@ -43,8 +44,38 @@ async function token(req, res) {
       throw new Error();
     }
   } catch (error) {
-    res.status(404).json({ message: "Credenciales incorrectas" });
+    return res.status(404).json({ message: "Credenciales incorrectas" });
   }
+}
+
+async function sendMail(req, res) {
+  try {
+    const user = await User.findOne({ where: { email: req.body.email } });
+    if (!user) {
+      throw new Error("Not Found");
+    }
+    const token = jwt.sign({ email: user.email, id: user.id }, process.env.API_SECRET);
+    let link = `${process.env.APP_DOMAIN}/resetpassword/${token}`;
+    let mailOptions = {
+      from: `"Manos Creativas" <${process.env.EMAIL_USER}>`, // sender address
+      to: user.email, // list of receivers
+      subject: "Restablecer Contraseña", // Subject line
+      html: `
+      <b>Por favor haz clic en el siguiente enlace para elegir una nueva contraseña:</b><br>
+      <a href="${link}">${link}</a>
+      `, // html body
+    };
+    await transporter.sendMail(mailOptions);
+    return res.status(200).json("Enviado");
+  } catch (error) {
+    console.log(error);
+    return res.status(404).json(error);
+  }
+}
+
+async function resetPassword(req, res) {
+  try {
+  } catch (error) {}
 }
 
 // Display the specified resource.
@@ -158,6 +189,8 @@ module.exports = {
   index,
   show,
   store,
+  sendMail,
+  resetPassword,
   token,
   update,
   destroy,
