@@ -1,9 +1,28 @@
-const { Product, User, Review } = require("../models");
+const { Product, Review } = require("../models");
 const formidable = require("formidable");
 
 // Display a listing of the resource.
 async function index(req, res) {
+  const categoryId = req.query.categoryId;
+  let products = [];
   try {
+    if (categoryId) {
+      products = await Product.findAll({
+        where: {
+          categoryId,
+        },
+      });
+    } else {
+      products = await Product.findAll();
+    }
+    return res.json(products);
+  } catch (error) {
+    return res.status(500).json({
+      message: "Internal Server Error",
+    });
+  }
+}
+/*   try {
     const products = await Product.findAll();
     if (!products) {
       //Analizar
@@ -14,29 +33,43 @@ async function index(req, res) {
     return res.status(500).json({
       message: "Internal Server Error",
     });
-  }
-}
+  } */
 
 // Display the specified resource.
 async function show(req, res) {
   try {
-    const product = await Product.findOne({
-      where: { slug: req.params.slug },
-      include: Review,
-    });
+    const product = await Product.findOne(
+      { where: { slug: req.params.slug } },
+      { include: Review },
+    );
     if (product) {
       return res.status(200).json(product);
     } else {
       throw new Error();
     }
   } catch (error) {
-    console.log(error);
     return res.status(404).json({
       message: "Not Found",
     });
   }
 }
 
+async function reset(req, res) {
+  try {
+    await require("../createDatabaseTables")();
+    await require("../seeders/categorySeeder")();
+    await require("../seeders/userSeeder")();
+    await require("../seeders/productSeeder")();
+    await require("../seeders/adminSeeder")();
+    return res.status(501).json({
+      message: "Unable to reset database",
+    });
+  } catch (error) {
+    return res.status(501).json({
+      message: "Unable to reset database",
+    });
+  }
+}
 // Show the form for creating a new resource
 async function create(req, res) {}
 
@@ -116,24 +149,6 @@ async function destroy(req, res) {
   } catch (error) {
     return res.status(404).json({
       message: "Not Found",
-    });
-  }
-}
-
-// Reset database
-async function reset(req, res) {
-  try {
-    await require("../createDatabaseTables")();
-    await require("../seeders/categorySeeder")();
-    await require("../seeders/userSeeder")();
-    await require("../seeders/productSeeder")();
-    await require("../seeders/adminSeeder")();
-    return res.status(501).json({
-      message: "Unable to reset database",
-    });
-  } catch (error) {
-    return res.status(501).json({
-      message: "Unable to reset database",
     });
   }
 }
