@@ -1,4 +1,4 @@
-const { Category } = require("../models");
+const { Category, Product } = require("../models");
 
 // Display a listing of the resource.
 async function index(req, res) {
@@ -17,8 +17,13 @@ async function index(req, res) {
 
 // Display the specified resource.
 async function show(req, res) {
+  console.log("lepe");
   try {
-    const category = await Category.findByPk(req.params.id, { raw: true, nest: true });
+    const category = await Category.findByPk(
+      req.params.id,
+      { include: Product },
+      { raw: true, nest: true },
+    );
     if (category) {
       return res.status(200).json(category);
     } else {

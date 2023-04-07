@@ -2,10 +2,35 @@ const { Admin } = require("../models");
 const jwt = require("jsonwebtoken");
 
 // Display a listing of the resource.
-async function index(req, res) {}
+async function index(req, res) {
+  try {
+    const admins = await Admin.findAll({ raw: true, nest: true });
+    if (!admins) {
+      throw new Error();
+    }
+    return res.json(admins);
+  } catch (error) {
+    return res.status(500).json({
+      message: "Internal Server Error",
+    });
+  }
+}
 
 // Display the specified resource.
-async function show(req, res) {}
+async function show(req, res) {
+  try {
+    const admin = await Admin.findByPk(req.params.id, { raw: true, nest: true });
+    if (admin) {
+      return res.status(200).json(admin);
+    } else {
+      throw new Error();
+    }
+  } catch (error) {
+    return res.status(404).json({
+      message: "Not Found",
+    });
+  }
+}
 
 // Show the form for creating a new resource
 async function create(req, res) {}
@@ -17,7 +42,28 @@ async function store(req, res) {}
 async function edit(req, res) {}
 
 // Update the specified resource in storage.
-async function update(req, res) {}
+async function update(req, res) {
+  const { firstname, lastname, email } = req.body;
+  try {
+    await Admin.update(
+      {
+        firstname,
+        lastname,
+        email,
+      },
+      {
+        where: {
+          id: req.params.id,
+        },
+      },
+    );
+    return res.status(201).json({ message: "Admin Updated" });
+  } catch (error) {
+    return res.status(501).json({
+      message: "Not Found",
+    });
+  }
+}
 
 // Remove the specified resource from storage.
 async function destroy(req, res) {

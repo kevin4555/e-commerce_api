@@ -2,7 +2,6 @@ const { Order } = require("../models");
 
 // Display a listing of the resource.
 async function index(req, res) {
-  console.log("req.params");
   try {
     const orders = await Order.findAll({ raw: true, nest: true });
     if (!orders) {
@@ -17,7 +16,20 @@ async function index(req, res) {
 }
 
 // Display the specified resource.
-async function show(req, res) {}
+async function show(req, res) {
+  try {
+    const order = await Order.findByPk(req.params.id, { raw: true, nest: true });
+    if (order) {
+      return res.status(200).json(order);
+    } else {
+      throw new Error();
+    }
+  } catch (error) {
+    return res.status(404).json({
+      message: "Not Found",
+    });
+  }
+}
 
 // Show the form for creating a new resource
 async function create(req, res) {}

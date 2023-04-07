@@ -7,6 +7,8 @@ const adminController = require("../controllers/adminController");
 // ...
 
 router.get("/", adminController.index);
+router.patch("/:id", adminController.update);
+router.delete("/:id", adminController.destroy);
 router.post("/tokens", adminController.token);
 
 module.exports = router;
