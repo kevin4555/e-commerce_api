@@ -22,8 +22,6 @@
 
 const { Review } = require("../models");
 
-faker.locale = "es";
-
 module.exports = async () => {
   const reviews = [];
 

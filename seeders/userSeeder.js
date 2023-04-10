@@ -22,8 +22,6 @@
 
 const { User } = require("../models");
 
-faker.locale = "es";
-
 module.exports = async () => {
   const users = [
     {
