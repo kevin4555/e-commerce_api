@@ -22,8 +22,6 @@
 
 const { Category } = require("../models");
 
-faker.locale = "es";
-
 module.exports = async () => {
   const categories = [
     {
