@@ -20,7 +20,6 @@
  *
  */
 
-const { faker } = require("@faker-js/faker");
 const { User } = require("../models");
 
 faker.locale = "es";
