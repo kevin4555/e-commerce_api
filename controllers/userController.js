@@ -132,6 +132,7 @@ async function store(req, res) {
           cacheControl: "3600",
           upsert: false,
           contentType: files.avatar.mimetype,
+          duplex: "half",
         });
       const token = jwt.sign({ email: user.email, id: user.id }, process.env.API_SECRET);
       return res.status(200).json({
