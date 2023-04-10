@@ -38,10 +38,10 @@ async function index(req, res) {
 // Display the specified resource.
 async function show(req, res) {
   try {
-    const product = await Product.findOne(
-      { where: { slug: req.params.slug } },
-      { include: Review },
-    );
+    const product = await Product.findOne({
+      where: { slug: req.params.slug },
+      include: [{ model: Review, include: User }],
+    });
     if (product) {
       return res.status(200).json(product);
     } else {
@@ -54,22 +54,6 @@ async function show(req, res) {
   }
 }
 
-async function reset(req, res) {
-  try {
-    await require("../createDatabaseTables")();
-    await require("../seeders/categorySeeder")();
-    await require("../seeders/userSeeder")();
-    await require("../seeders/productSeeder")();
-    await require("../seeders/adminSeeder")();
-    return res.status(501).json({
-      message: "Unable to reset database",
-    });
-  } catch (error) {
-    return res.status(501).json({
-      message: "Unable to reset database",
-    });
-  }
-}
 // Show the form for creating a new resource
 async function create(req, res) {}
 
@@ -164,5 +148,4 @@ module.exports = {
   edit,
   update,
   destroy,
-  reset,
 };
