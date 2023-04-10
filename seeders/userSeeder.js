@@ -28,29 +28,29 @@ faker.locale = "es";
 module.exports = async () => {
   const users = [];
   //const names = ["Female", "Male"];
-  /*  for (let i = 0; i < 20; i++) {
+  for (let i = 0; i < 20; i++) {
     let firstname = faker.name.firstName();
     let lastname = faker.name.lastName();
     users.push({
       firstname,
       lastname,
-      email: faker.internet.email(firstname, lastname, "gmail.com"),
+      email: firstname + lastname + "gmail.com",
       address: "Uru",
       password: "1234",
-      phone: faker.phone.number("09#######"),
+      phone: "3123213",
       avatar: `Profile_defaultFemale.png`,
     });
-  } */
+  }
 
-  users.push({
+  /* users.push({
     firstname: "Juan",
     lastname: "Pérez",
     email: "user@1234.com",
     password: "1234",
-    address: "faker.helpers.fake(`${faker.address.city()}, ${faker.address.streetAddress()}`)",
-    phone: "faker.phone.number)",
+    address: faker.helpers.fake(`${faker.address.city()}, ${faker.address.streetAddress()}`),
+    phone: faker.phone.number(),
     avatar: "Profile_defaultMale.png",
-  });
+  }); */
 
   await User.bulkCreate(users);
   console.log("[Database] Se corrió el seeder de Users.");
