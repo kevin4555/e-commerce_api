@@ -29,7 +29,7 @@ module.exports = async () => {
   const users = [];
   const names = ["Female", "Male"];
   for (let i = 0; i < 20; i++) {
-    let random = Math.floor(Math.random() * 2);
+    let random = faker.datatype.number({ min: 0, max: 1 });
     let firstname = faker.name.firstName(names[random].toLowerCase());
     let lastname = faker.name.lastName();
     users.push({
