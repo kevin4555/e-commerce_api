@@ -29,8 +29,8 @@ module.exports = async () => {
   const users = [];
   //const names = ["Female", "Male"];
   for (let i = 0; i < 20; i++) {
-    let firstname = " faker.name.firstName()";
-    let lastname = "faker.name.lastName()";
+    let firstname = faker.name.firstName();
+    let lastname = faker.name.lastName();
     users.push({
       firstname,
       lastname,
