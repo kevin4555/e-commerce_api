@@ -237,7 +237,7 @@ module.exports = async () => {
     {
       title: "Peluche Beagle",
       description:
-        " El peluche Beagle es una excelente opción para agregar un toque lindo y tierno a cualquier espacio. En general, los peluches son una gran manera de suavizar los bordes de una habitación y crear un ambiente acogedor y amigable.",
+        "El peluche Beagle es una excelente opción para agregar un toque lindo y tierno a cualquier espacio. En general, los peluches son una gran manera de suavizar los bordes de una habitación y crear un ambiente acogedor y amigable.",
       price: 16,
       img: { img1: "Tejido_Beagle.webp", img2: "Tejido_Beagle2.webp" },
       stock: 3,
