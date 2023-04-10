@@ -9,6 +9,8 @@ const path = require("path");
 const { v4: uuidv4 } = require("uuid");
 const { log } = require("console");
 const transporter = require("./../transporter");
+
+//supabase
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
 // Display a listing of the resource.
