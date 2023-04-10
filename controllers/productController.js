@@ -1,4 +1,4 @@
-const { Product, Review } = require("../models");
+const { Product, Review, User } = require("../models");
 const formidable = require("formidable");
 
 // Display a listing of the resource.
@@ -40,7 +40,13 @@ async function show(req, res) {
   try {
     const product = await Product.findOne({
       where: { slug: req.params.slug },
-      include: [{ model: Review, include: User }],
+      include: [
+        {
+          model: Review,
+          order: ["createdAt", "asc"],
+          include: [{ model: User, attributes: { exclude: ["password"] } }],
+        },
+      ],
     });
     if (product) {
       return res.status(200).json(product);
@@ -48,6 +54,7 @@ async function show(req, res) {
       throw new Error();
     }
   } catch (error) {
+    console.log(error);
     return res.status(404).json({
       message: "Not Found",
     });
