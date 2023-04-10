@@ -34,7 +34,7 @@ module.exports = (app) => {
   app.get("/", (req, res) => {
     res.send("Working");
   });
-  app.get("/reset", async (req, res) => {
+  app.put("/reset", async (req, res) => {
     try {
       await require("../createDatabaseTables")();
       await require("../seeders/categorySeeder")();
