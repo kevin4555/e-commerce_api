@@ -28,7 +28,7 @@ faker.locale = "es";
 module.exports = async () => {
   const users = [];
   //const names = ["Female", "Male"];
-  for (let i = 0; i < 20; i++) {
+  /*  for (let i = 0; i < 20; i++) {
     let firstname = faker.name.firstName();
     let lastname = faker.name.lastName();
     users.push({
@@ -40,15 +40,15 @@ module.exports = async () => {
       phone: faker.phone.number("09#######"),
       avatar: `Profile_defaultFemale.png`,
     });
-  }
+  } */
 
   users.push({
     firstname: "Juan",
     lastname: "Pérez",
     email: "user@1234.com",
     password: "1234",
-    address: faker.helpers.fake(`${faker.address.city()}, ${faker.address.streetAddress()}`),
-    phone: faker.phone.number("09#######"),
+    address: "faker.helpers.fake(`${faker.address.city()}, ${faker.address.streetAddress()}`)",
+    phone: "faker.phone.number)",
     avatar: "Profile_defaultMale.png",
   });
 
