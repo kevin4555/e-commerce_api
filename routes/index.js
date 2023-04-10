@@ -39,7 +39,7 @@ module.exports = (app) => {
     try {
       await require("../createDatabaseTables")();
       await require("../seeders/categorySeeder")();
-      await require("../seeders/userSeeder")();
+      //await require("../seeders/userSeeder")();
       await require("../seeders/productSeeder")();
       await require("../seeders/adminSeeder")();
       console.log("[Database] Reset Completado");
