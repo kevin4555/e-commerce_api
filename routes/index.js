@@ -35,12 +35,13 @@ module.exports = (app) => {
     res.send("Working");
   });
   app.put("/reset", async (req, res) => {
+    console.log("entro /reset");
     try {
       await require("../createDatabaseTables")();
-      await require("../seeders/categorySeeder")();
+      /* await require("../seeders/categorySeeder")();
       await require("../seeders/userSeeder")();
       await require("../seeders/productSeeder")();
-      await require("../seeders/adminSeeder")();
+      await require("../seeders/adminSeeder")(); */
       console.log("[Database] Reset Completado");
       return res.status(201).json({
         message: "Reset database",
