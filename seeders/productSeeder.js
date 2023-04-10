@@ -237,8 +237,8 @@ module.exports = async () => {
     {
       title: "Peluche Beagle",
       description:
-        "Este portallaves de madera es una pieza de organización práctica y elegante. Hecho a mano con madera maciza de alta calidad, este portallaves cuenta con ganchos de metal para colgar tus llaves de manera segura y organizada. Con su diseño minimalista y elegante, este portallaves es perfecto para cualquier espacio de tu hogar donde desees mantener tus llaves organizadas y accesibles.",
-      price: 22,
+        " El peluche Beagle es una excelente opción para agregar un toque lindo y tierno a cualquier espacio. En general, los peluches son una gran manera de suavizar los bordes de una habitación y crear un ambiente acogedor y amigable.",
+      price: 16,
       img: { img1: "Tejido_Beagle.webp", img2: "Tejido_Beagle2.webp" },
       stock: 3,
       rating: 4.8,
@@ -247,7 +247,7 @@ module.exports = async () => {
     {
       title: "Botitas para bebé",
       description:
-        "Este portallaves de madera es una pieza de organización práctica y elegante. Hecho a mano con madera maciza de alta calidad, este portallaves cuenta con ganchos de metal para colgar tus llaves de manera segura y organizada. Con su diseño minimalista y elegante, este portallaves es perfecto para cualquier espacio de tu hogar donde desees mantener tus llaves organizadas y accesibles.",
+        "Estas botitas suelen tener un diseño adorable y encantador, con colores suaves y patrones delicados, como flores o animales. También pueden tener detalles como cordones o cierres de velcro para que sea fácil ponerlas y quitarlas.",
       price: 18,
       img: { img1: "Tejido_Botitas.avif", img2: "Tejido_Botitas2.avif" },
       stock: 3,
@@ -257,7 +257,7 @@ module.exports = async () => {
     {
       title: "Conejo de peluche",
       description:
-        "Este portallaves de madera es una pieza de organización práctica y elegante. Hecho a mano con madera maciza de alta calidad, este portallaves cuenta con ganchos de metal para colgar tus llaves de manera segura y organizada. Con su diseño minimalista y elegante, este portallaves es perfecto para cualquier espacio de tu hogar donde desees mantener tus llaves organizadas y accesibles.",
+        "El conejo de peluche típicamente tiene una apariencia dulce y tierna, con grandes orejas y ojos grandes y brillantes. Puede venir en diferentes tamaños y colores, desde un pequeño conejito de peluche hasta un conejo gigante de peluche que puede ser utilizado como almohada.",
       price: 33,
       img: { img1: "Tejido_Conejo.avif", img2: "Tejido_Conejo2.avif" },
       stock: 23,
@@ -267,7 +267,7 @@ module.exports = async () => {
     {
       title: "Peluche Elefante",
       description:
-        "Este portallaves de madera es una pieza de organización práctica y elegante. Hecho a mano con madera maciza de alta calidad, este portallaves cuenta con ganchos de metal para colgar tus llaves de manera segura y organizada. Con su diseño minimalista y elegante, este portallaves es perfecto para cualquier espacio de tu hogar donde desees mantener tus llaves organizadas y accesibles.",
+        "El peluche elefante típicamente tiene una apariencia amigable y adorable, con grandes orejas y una trompa larga. Puede venir en diferentes tamaños y colores, desde un pequeño elefantito de peluche hasta un elefante gigante de peluche que puede ser utilizado como almohada.",
       price: 18,
       img: { img1: "Tejido_Elefante.webp", img2: "Tejido_Elefante2.avif" },
       stock: 15,
@@ -277,7 +277,7 @@ module.exports = async () => {
     {
       title: "Peluche Gallina",
       description:
-        "Este portallaves de madera es una pieza de organización práctica y elegante. Hecho a mano con madera maciza de alta calidad, este portallaves cuenta con ganchos de metal para colgar tus llaves de manera segura y organizada. Con su diseño minimalista y elegante, este portallaves es perfecto para cualquier espacio de tu hogar donde desees mantener tus llaves organizadas y accesibles.",
+        "El peluche gallina típicamente tiene una apariencia amigable y encantadora, con una cresta roja, alas y una cola. Puede venir en diferentes tamaños y colores, desde una pequeña pollita de peluche hasta una gallina gigante de peluche que puede ser utilizada como almohada.",
       price: 18,
       img: { img1: "Tejido_Gallina.avif", img2: "Tejido_Gallina2.avif" },
       stock: 1,
@@ -287,7 +287,7 @@ module.exports = async () => {
     {
       title: "Peluche Gato",
       description:
-        "Este portallaves de madera es una pieza de organización práctica y elegante. Hecho a mano con madera maciza de alta calidad, este portallaves cuenta con ganchos de metal para colgar tus llaves de manera segura y organizada. Con su diseño minimalista y elegante, este portallaves es perfecto para cualquier espacio de tu hogar donde desees mantener tus llaves organizadas y accesibles.",
+        "El peluche de gato típicamente tiene una apariencia encantadora y tierna, con orejas puntiagudas y ojos grandes y brillantes. Puede venir en diferentes tamaños y colores, desde un pequeño gatito de peluche hasta un gato gigante de peluche que puede ser utilizado como almohada.",
       price: 29,
       img: { img1: "Tejido_Gato.webp", img2: "Tejido_Gato2.webp" },
       stock: 3,
@@ -297,7 +297,7 @@ module.exports = async () => {
     {
       title: "Peluche Pato",
       description:
-        "Este portallaves de madera es una pieza de organización práctica y elegante. Hecho a mano con madera maciza de alta calidad, este portallaves cuenta con ganchos de metal para colgar tus llaves de manera segura y organizada. Con su diseño minimalista y elegante, este portallaves es perfecto para cualquier espacio de tu hogar donde desees mantener tus llaves organizadas y accesibles.",
+        "El peluche de pato típicamente tiene una apariencia divertida y alegre, con una cabeza redonda y una cresta amarilla. Puede venir en diferentes tamaños y colores, desde un pequeño patito de peluche hasta un pato gigante de peluche que puede ser utilizado como almohada.",
       price: 13,
       img: { img1: "Tejido_Pato.avif", img2: "Tejido_Pato2.avif" },
       stock: 31,
@@ -307,7 +307,7 @@ module.exports = async () => {
     {
       title: "Peluche Pingüino",
       description:
-        "Este portallaves de madera es una pieza de organización práctica y elegante. Hecho a mano con madera maciza de alta calidad, este portallaves cuenta con ganchos de metal para colgar tus llaves de manera segura y organizada. Con su diseño minimalista y elegante, este portallaves es perfecto para cualquier espacio de tu hogar donde desees mantener tus llaves organizadas y accesibles.",
+        "El peluche de pingüino típicamente tiene una apariencia adorable y simpática, con un cuerpo redondeado, alas pequeñas y una cabeza negra y blanca. Puede venir en diferentes tamaños y colores, desde un pequeño pingüino de peluche hasta un pingüino gigante de peluche que puede ser utilizado como almohada.",
       price: 19,
       img: { img1: "Tejido_Pinguino.avif", img2: "Tejido_Pinguino2.avif" },
       stock: 9,
@@ -317,7 +317,7 @@ module.exports = async () => {
     {
       title: "Peluche Rana",
       description:
-        "Este portallaves de madera es una pieza de organización práctica y elegante. Hecho a mano con madera maciza de alta calidad, este portallaves cuenta con ganchos de metal para colgar tus llaves de manera segura y organizada. Con su diseño minimalista y elegante, este portallaves es perfecto para cualquier espacio de tu hogar donde desees mantener tus llaves organizadas y accesibles.",
+        "El peluche de rana típicamente tiene una apariencia divertida y simpática, con una cabeza grande, ojos saltones y patas largas y delgadas. Puede venir en diferentes tamaños y colores, desde una pequeña rana de peluche hasta una rana gigante de peluche que puede ser utilizada como almohada.",
       price: 18,
       img: { img1: "Tejido_Rana.webp", img2: "Tejido_Rana2.webp" },
       stock: 18,
