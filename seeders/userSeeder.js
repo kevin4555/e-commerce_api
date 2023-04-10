@@ -28,28 +28,23 @@ faker.locale = "es";
 module.exports = async () => {
   const users = [];
   //const names = ["Female", "Male"];
-  /* for (let i = 0; i < 20; i++) {
-    let firstname = "faker.name.firstName()";
-    let lastname = "faker.name.lastName()";
+  for (let i = 0; i < 20; i++) {
+    const firstName = faker.name.firstName();
+    const lastName = faker.name.lastName();
+    const email = faker.internet.email();
+    const password = faker.internet.password();
+    const address = faker.address.streetAddress();
+    const phone = faker.phone.number();
+    const avatar = "Profile_defaultMale.png";
+
     users.push({
-      firstname,
-      lastname,
-      email: firstname + lastname + "gmail.com",
-      address: "Uru",
-      password: "1234",
-      phone: "3123213",
-      avatar: `Profile_defaultFemale.png`,
-    });
-  } */
-  for (let index = 0; index < 3; index++) {
-    users.push({
-      firstname: "Juan",
-      lastname: "Pérez",
-      email: "user@1234.com",
-      password: "1234",
-      address: "45",
-      phone: "4654",
-      avatar: "Profile_defaultMale.png",
+      firstname: firstName,
+      lastname: lastName,
+      email: email,
+      password: password,
+      address: address,
+      phone: phone,
+      avatar: avatar,
     });
   }
 
