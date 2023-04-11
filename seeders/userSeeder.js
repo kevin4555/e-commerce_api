@@ -128,15 +128,6 @@ module.exports = async () => {
       phone: "689345678",
       avatar: "Profile_defaultMale.png",
     },
-    {
-      firstname: "Marta",
-      lastname: "Jiménez",
-      email: "marta.jimenez@gmail.com",
-      password: "1234",
-      address: "Calle del Río 18",
-      phone: "678567893",
-      avatar: "Profile_defaultFemale.png",
-    },
   ];
 
   await User.bulkCreate(users);
