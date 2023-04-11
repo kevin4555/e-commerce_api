@@ -17,7 +17,6 @@ async function index(req, res) {
 
 // Display the specified resource.
 async function show(req, res) {
-  console.log("lepe");
   try {
     const category = await Category.findByPk(
       req.params.id,

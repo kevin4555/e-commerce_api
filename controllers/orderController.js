@@ -1,4 +1,5 @@
-const { Order } = require("../models");
+const { Order, Product } = require("../models");
+const { findByPk, findAll } = require("../models/User");
 
 // Display a listing of the resource.
 async function index(req, res) {
@@ -36,13 +37,21 @@ async function create(req, res) {}
 
 // Store a newly created resource in storage.
 async function store(req, res) {
-  const { items, totalPrice, address, userId } = req.body;
+  const products = [];
+  let totalPrice = 0;
+  const { items, address, userId } = req.body;
+
   try {
+    for (const item of items) {
+      let product = await Product.findByPk(item.id);
+      products.push(product);
+      totalPrice = Number(totalPrice) + Number(product.price * item.quantity);
+    }
     await Order.create({
       status: "Procesando",
       address: { ...address },
-      products: { items: [...items] },
-      totalPrice: totalPrice,
+      products: { products: [...products] },
+      totalPrice,
       userId,
     });
     return res.status(201).json({ message: "Order Created" });

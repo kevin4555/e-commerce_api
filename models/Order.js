@@ -33,9 +33,9 @@ class Order extends Model {
             notEmpty: true,
           },
         },
-        /*    totalPrice: {
+        totalPrice: {
           type: DataTypes.DECIMAL,
-        }, */
+        },
       },
       {
         sequelize,
