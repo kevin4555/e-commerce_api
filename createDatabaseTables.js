@@ -23,6 +23,4 @@ async function createDatabaseTables() {
   console.log("[Database] ¡Las tablas fueron creadas!");
 }
 
-//createDatabaseTables();
-
 module.exports = createDatabaseTables;
