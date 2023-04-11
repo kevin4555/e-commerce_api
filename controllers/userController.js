@@ -1,13 +1,10 @@
 const { User, Admin } = require("../models");
 const formidable = require("formidable");
 const jwt = require("jsonwebtoken");
-const { findOne, findByPk } = require("../models/User");
-const { where } = require("sequelize");
 const { createClient } = require("@supabase/supabase-js");
 const fs = require("fs");
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
-const { log } = require("console");
 const transporter = require("./../transporter");
 
 //supabase

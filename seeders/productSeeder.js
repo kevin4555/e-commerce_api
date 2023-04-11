@@ -324,6 +324,56 @@ module.exports = async () => {
       rating: 4.9,
       categoryId: 4,
     },
+    {
+      title: "Redpanda de madera",
+      description:
+        "La figura de red panda de madera es popular como objeto decorativo en hogares y oficinas, ya que el red panda es una criatura adorable y única.",
+      price: 10,
+      img: { img1: "Redpanda_Madera2.webp", img2: "Redpanda de madera.webp" },
+      stock: 52,
+      rating: 5,
+      categoryId: 5,
+    },
+    {
+      title: "Gorila de madera",
+      description:
+        "La figura de gorila de madera es una adición impresionante a cualquier decoración temática de la selva o la naturaleza.",
+      price: 10,
+      img: { img1: "Gorila_Madera2.webp", img2: "Gorila_Madera.avif" },
+      stock: 52,
+      rating: 5,
+      categoryId: 5,
+    },
+    {
+      title: "Calabaza de madera",
+      description:
+        "Una figura de calabaza de madera es una opción decorativa encantadora y única para cualquier persona que busque agregar una pieza de decoración temática de la temporada de otoño a su hogar u oficina.",
+      price: 10,
+      img: { img1: "Calabaza_Madera.avif", img2: "Calabaza_Madera2.webp" },
+      stock: 52,
+      rating: 5,
+      categoryId: 5,
+    },
+    {
+      title: "Maceta de hombrecitos leyendo",
+      description:
+        "La maceta de hombrecitos leyendo es una opción encantadora para cualquier amante de la lectura o amante de las plantas que busque agregar una pieza decorativa única y llamativa a su hogar u oficina.",
+      price: 10,
+      img: { img1: "Maceta_Hombrecito_Negro_Blanco.webp", img2: "Maceta_Hombrecito_Negro2.webp" },
+      stock: 52,
+      rating: 5,
+      categoryId: 5,
+    },
+    {
+      title: "Maceta de hombrecitos tomando vino",
+      description:
+        "Una maceta de hombrecitos tomando vino es una pieza decorativa divertida y única para cualquier persona que busque agregar un toque de humor a su decoración.",
+      price: 10,
+      img: { img1: "Maceta_Hombrecitos_Blancos.avif", img2: "Maceta_Hombrecito_Blanco.webp" },
+      stock: 52,
+      rating: 5,
+      categoryId: 5,
+    },
   ];
   await Product.bulkCreate(products);
   console.log("[Database] Se corrió el seeder de Products.");
