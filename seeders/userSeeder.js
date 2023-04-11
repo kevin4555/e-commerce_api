@@ -128,6 +128,33 @@ module.exports = async () => {
       phone: "689345678",
       avatar: "Profile_defaultMale.png",
     },
+    {
+      firstname: "Marta",
+      lastname: "Jiménez",
+      email: "marta.jimenez@gmail.com",
+      password: "1234",
+      address: "Calle del Río 18",
+      phone: "678567893",
+      avatar: "Profile_defaultFemale.png",
+    },
+    {
+      firstname: "Pedro",
+      lastname: "Ruiz",
+      email: "pedro.ruiz@gmail.com",
+      password: "1234",
+      address: "Plaza de la Constitución 7",
+      phone: "634859272",
+      avatar: "Profile_defaultMale.png",
+    },
+    {
+      firstname: "Isabel",
+      lastname: "Ortega",
+      email: "isabel.ortega@gmail.com",
+      password: "1234",
+      address: "Calle de la Paz 12",
+      phone: "654890123",
+      avatar: "Profile_defaultFemale.png",
+    },
   ];
 
   await User.bulkCreate(users);
