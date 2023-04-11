@@ -75,7 +75,7 @@ module.exports = async () => {
       price: 300,
       img: {
         img1: "Pintura_BlancoyNegro.webp",
-        img1: "Pintura_BlancoyNegro2.webp",
+        img2: "Pintura_BlancoyNegro2.webp",
       },
       stock: 6,
       rating: 4.5,

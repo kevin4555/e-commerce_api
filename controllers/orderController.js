@@ -46,6 +46,14 @@ async function store(req, res) {
       let product = await Product.findByPk(item.id);
       products.push(product);
       totalPrice = Number(totalPrice) + Number(product.price * item.quantity);
+      console.log("1", product.stock);
+      product.stock = product.stock - Number(item.quantity);
+      console.log("2", product.stock);
+      if (product.stock <= 0) {
+        return res.message({ msg: "Fuera de Stock" });
+      } else {
+        await product.save();
+      }
     }
     await Order.create({
       status: "Procesando",
