@@ -8,7 +8,7 @@ module.exports = async () => {
       email: "lucia.garcia@gmail.com",
       password: "1234",
       address: "Calle del Sol 28",
-      phone: "611385728",
+      phone: "091654349",
       avatar: "Profile_defaultFemale.png",
     },
     {
@@ -17,7 +17,7 @@ module.exports = async () => {
       email: "santiago.fernandez@gmail.com",
       password: "1234",
       address: "Calle de la Paz 15",
-      phone: "673842675",
+      phone: "091654349",
       avatar: "Profile_defaultMale.png",
     },
     {
@@ -26,7 +26,7 @@ module.exports = async () => {
       email: "maria.martinez@gmail.com",
       password: "1234",
       address: "Avenida de la Libertad 5",
-      phone: "612345678",
+      phone: "091654349",
       avatar: "Profile_defaultFemale.png",
     },
     {
@@ -35,7 +35,7 @@ module.exports = async () => {
       email: "adrian.gomez@gmail.com",
       password: "1234",
       address: "Plaza Mayor 10",
-      phone: "677483920",
+      phone: "091654349",
       avatar: "Profile_defaultMale.png",
     },
     {
@@ -44,7 +44,7 @@ module.exports = async () => {
       email: "andrea.hernandez@gmail.com",
       password: "1234",
       address: "Calle del Cid 3",
-      phone: "611324568",
+      phone: "091654349",
       avatar: "Profile_defaultFemale.png",
     },
     {
@@ -53,7 +53,7 @@ module.exports = async () => {
       email: "david.perez@gmail.com",
       password: "1234",
       address: "Calle de la Estrella 12",
-      phone: "689345678",
+      phone: "091654349",
       avatar: "Profile_defaultMale.png",
     },
     {
@@ -62,7 +62,7 @@ module.exports = async () => {
       email: "alicia.gonzalez@gmail.com",
       password: "1234",
       address: "Avenida de la Constitución 8",
-      phone: "678567894",
+      phone: "091654349",
       avatar: "Profile_defaultFemale.png",
     },
     {
@@ -71,7 +71,7 @@ module.exports = async () => {
       email: "jorge.rodriguez@gmail.com",
       password: "1234",
       address: "Calle Mayor 20",
-      phone: "634859273",
+      phone: "091654349",
       avatar: "Profile_defaultMale.png",
     },
     {
@@ -80,7 +80,7 @@ module.exports = async () => {
       email: "ana.sanchez@gmail.com",
       password: "1234",
       address: "Calle de la Luna 14",
-      phone: "654890124",
+      phone: "091654349",
       avatar: "Profile_defaultFemale.png",
     },
     {
@@ -89,7 +89,7 @@ module.exports = async () => {
       email: "carlos.lopez@gmail.com",
       password: "1234",
       address: "Calle del Sol 16",
-      phone: "689078356",
+      phone: "091654349",
       avatar: "Profile_defaultMale.png",
     },
     {
@@ -98,16 +98,16 @@ module.exports = async () => {
       email: "elena.gimenez@gmail.com",
       password: "1234",
       address: "Calle de la Playa 9",
-      phone: "612345689",
+      phone: "091654349",
       avatar: "Profile_defaultFemale.png",
     },
     {
-      firstname: "José",
-      lastname: "Muñoz",
-      email: "jose.munoz@gmail.com",
+      firstname: "Juan",
+      lastname: "Pérez",
+      email: "user@1234.com",
       password: "1234",
       address: "Avenida del Mar 23",
-      phone: "677483923",
+      phone: "091654349",
       avatar: "Profile_defaultMale.png",
     },
   ];
