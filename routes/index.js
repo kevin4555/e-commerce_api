@@ -39,9 +39,9 @@ module.exports = (app) => {
     try {
       await require("../createDatabaseTables")();
       await require("../seeders/categorySeeder")();
-      await require("../seeders/userSeeder")();
       await require("../seeders/productSeeder")();
       await require("../seeders/adminSeeder")();
+      await require("../seeders/userSeeder")();
       console.log("[Database] Reset Completado");
       return res.status(201).json({
         message: "Reset database",
