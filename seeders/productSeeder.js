@@ -235,6 +235,26 @@ module.exports = async () => {
       categoryId: 3,
     },
     {
+      title: "Carrito de Madera",
+      description:
+        "Este carrito de madera es el juguete perfecto para estimular la creatividad y el aprendizaje de los niños. Incluye bloques con letras para que los pequeños puedan construir palabras y frases, mientras que el carrito les permite moverse y explorar el espacio a su alrededor. Fabricado con materiales de alta calidad y un diseño resistente, este carrito de madera es un regalo ideal para cualquier niño en edad preescolar.",
+      price: 37,
+      img: { img1: "Madera_Carrito.webp", img2: "Madera_Carrito2.jpg" },
+      stock: 23,
+      rating: 5.0,
+      categoryId: 3,
+    },
+    {
+      title: "Cajas de Madera Hexagonales",
+      description:
+        "Estas cajitas hexagonales de madera son el accesorio ideal para cualquier hogar moderno. Su diseño minimalista y elegante las hace perfectas para almacenar pequeños objetos de valor, como joyas o llaves, sin ocupar mucho espacio. Además, estas cajitas son lo suficientemente grandes como para guardar varios artículos, pero lo suficientemente pequeñas como para ser transportadas fácilmente. Fabricadas con madera de alta calidad, estas cajitas son una inversión duradera y práctica.",
+      price: 25,
+      img: { img1: "Madera_Moderna.webp", img2: "Madera_Moderna2.jpg" },
+      stock: 23,
+      rating: 4.9,
+      categoryId: 3,
+    },
+    {
       title: "Peluche Beagle",
       description:
         "El peluche Beagle es una excelente opción para agregar un toque lindo y tierno a cualquier espacio. En general, los peluches son una gran manera de suavizar los bordes de una habitación y crear un ambiente acogedor y amigable.",
@@ -370,6 +390,26 @@ module.exports = async () => {
         "Una maceta de hombrecitos tomando vino es una pieza decorativa divertida y única para cualquier persona que busque agregar un toque de humor a su decoración.",
       price: 10,
       img: { img1: "Maceta_Hombrecitos_Blancos.avif", img2: "Maceta_Hombrecito_Blanco.webp" },
+      stock: 52,
+      rating: 5,
+      categoryId: 5,
+    },
+    {
+      title: "Set de Madera Nórdica",
+      description:
+        "Esta decoración nórdica de madera con forma de arbolito es una adición encantadora a cualquier hogar. Hecho con madera natural y un diseño elegante y minimalista, este adorno agrega un toque de calidez y confort a cualquier espacio. Ya sea colgado en una pared o colocado en una repisa, este arbolito de madera es una manera sencilla y efectiva de añadir un toque de estilo escandinavo a cualquier habitación.",
+      price: 89,
+      img: { img1: "Decoracion_Nordico.webp", img2: "Decoracion_Nordico2.jpg" },
+      stock: 12,
+      rating: 4.8,
+      categoryId: 5,
+    },
+    {
+      title: "Terra Punto Cotta",
+      description:
+        "Estos hermosos tumblers son la combinación perfecta de estilo y funcionalidad. Hechos a mano en cerámica terra cotta, cada tumbler tiene un diseño punteado único que le da un toque de originalidad a cualquier mesa. Además de ser visualmente atractivos, estos tumblers son ideales para servir bebidas frías o calientes gracias a su capacidad de retener la temperatura. Perfectos para cualquier ocasión, desde una cena formal hasta una reunión casual con amigos.",
+      price: 15,
+      img: { img1: "Decoracion_TerraPuntoCotta.webp", img2: "Decoracion_TerraPuntoCotta2.webp" },
       stock: 52,
       rating: 5,
       categoryId: 5,
