@@ -34,25 +34,6 @@ module.exports = (app) => {
   app.get("/", (req, res) => {
     res.send("Working");
   });
-  app.put("/reset", async (req, res) => {
-    console.log("entro /reset");
-    try {
-      await require("../createDatabaseTables")();
-      await require("../seeders/categorySeeder")();
-      await require("../seeders/productSeeder")();
-      await require("../seeders/adminSeeder")();
-      await require("../seeders/userSeeder")();
-      console.log("[Database] Reset Completado");
-      return res.status(201).json({
-        message: "Reset database",
-      });
-    } catch (error) {
-      console.log(error);
-      return res.status(501).json({
-        message: "Unable to reset database",
-      });
-    }
-  });
 
   app.use("/users", userRoutes);
   app.use("/products", productRoutes);
