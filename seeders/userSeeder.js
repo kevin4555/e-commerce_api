@@ -9,7 +9,7 @@ module.exports = async () => {
       password: "1234",
       address: "Calle del Sol 28",
       phone: "091654349",
-      avatar: "Profile_defaultFemale.png",
+      avatar: "Profile_defaultFemale1.png",
     },
     {
       firstname: "Santiago",
@@ -18,7 +18,7 @@ module.exports = async () => {
       password: "1234",
       address: "Calle de la Paz 15",
       phone: "091654349",
-      avatar: "Profile_defaultMale.png",
+      avatar: "Profile_defaultMale1.png",
     },
     {
       firstname: "María",
@@ -27,7 +27,7 @@ module.exports = async () => {
       password: "1234",
       address: "Avenida de la Libertad 5",
       phone: "091654349",
-      avatar: "Profile_defaultFemale.png",
+      avatar: "Profile_defaultFemale2.png",
     },
     {
       firstname: "Adrián",
@@ -36,7 +36,7 @@ module.exports = async () => {
       password: "1234",
       address: "Plaza Mayor 10",
       phone: "091654349",
-      avatar: "Profile_defaultMale.png",
+      avatar: "Profile_defaultMale2.png",
     },
     {
       firstname: "Andrea",
@@ -45,7 +45,7 @@ module.exports = async () => {
       password: "1234",
       address: "Calle del Cid 3",
       phone: "091654349",
-      avatar: "Profile_defaultFemale.png",
+      avatar: "Profile_defaultFemale3.png",
     },
     {
       firstname: "David",
@@ -54,7 +54,7 @@ module.exports = async () => {
       password: "1234",
       address: "Calle de la Estrella 12",
       phone: "091654349",
-      avatar: "Profile_defaultMale.png",
+      avatar: "Profile_defaultMale3.png",
     },
     {
       firstname: "Alicia",
@@ -63,7 +63,7 @@ module.exports = async () => {
       password: "1234",
       address: "Avenida de la Constitución 8",
       phone: "091654349",
-      avatar: "Profile_defaultFemale.png",
+      avatar: "Profile_defaultFemale4.png",
     },
     {
       firstname: "Jorge",
@@ -72,7 +72,7 @@ module.exports = async () => {
       password: "1234",
       address: "Calle Mayor 20",
       phone: "091654349",
-      avatar: "Profile_defaultMale.png",
+      avatar: "Profile_defaultMale4.png",
     },
     {
       firstname: "Ana",
@@ -81,7 +81,7 @@ module.exports = async () => {
       password: "1234",
       address: "Calle de la Luna 14",
       phone: "091654349",
-      avatar: "Profile_defaultFemale.png",
+      avatar: "Profile_defaultFemale5.png",
     },
     {
       firstname: "Carlos",
@@ -90,7 +90,7 @@ module.exports = async () => {
       password: "1234",
       address: "Calle del Sol 16",
       phone: "091654349",
-      avatar: "Profile_defaultMale.png",
+      avatar: "Profile_defaultMale5.png",
     },
     {
       firstname: "Elena",
@@ -99,7 +99,7 @@ module.exports = async () => {
       password: "1234",
       address: "Calle de la Playa 9",
       phone: "091654349",
-      avatar: "Profile_defaultFemale.png",
+      avatar: "Profile_defaultFemale6.png",
     },
     {
       firstname: "Juan",
@@ -108,7 +108,7 @@ module.exports = async () => {
       password: "1234",
       address: "Avenida del Mar 23",
       phone: "091654349",
-      avatar: "Profile_defaultMale.png",
+      avatar: "Profile_defaultUser.png",
     },
   ];
 
