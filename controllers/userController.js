@@ -146,10 +146,13 @@ async function store(req, res) {
 
 // Update the specified resource in storage.
 async function update(req, res) {
-  let user = await User.findOne({ where: { id: req.auth.id, email: req.auth.email } });
+  let user = await User.findOne({ where: { id: req.auth.id /* email: req.auth.email */ } });
   let authuser = user && user.id === Number(req.params.id);
 
-  if (authuser || (await Admin.findOne({ where: { id: req.auth.id, email: req.auth.email } }))) {
+  if (
+    authuser ||
+    (await Admin.findOne({ where: { id: req.auth.id /* email: req.auth.email */ } }))
+  ) {
     if (!authuser) {
       user = await User.findByPk(req.params.id);
     }
@@ -165,10 +168,11 @@ async function update(req, res) {
           email: fields.email,
           phone: fields.phone,
           address: fields.address,
+          avatar: files.avatar.originalFilename,
         });
         const { data, error } = await supabase.storage
           .from("images")
-          .update(user.avatar, fs.createReadStream(files.avatar.filepath), {
+          .upload(user.avatar, fs.createReadStream(files.avatar.filepath), {
             cacheControl: "3600",
             upsert: false,
             contentType: files.avatar.mimetype,
