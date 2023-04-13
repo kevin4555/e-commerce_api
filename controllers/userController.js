@@ -159,24 +159,16 @@ async function update(req, res) {
     });
     form.parse(req, async (err, fields, files) => {
       try {
-        await User.update(
-          {
-            firstname: fields.firstname,
-            lastname: fields.lastname,
-            email: fields.email,
-            phone: fields.phone,
-            address: fields.address,
-            avatar: files.avatar.newFilename,
-          },
-          {
-            where: {
-              id: req.auth.id,
-            },
-          },
-        );
+        await user.update({
+          firstname: fields.firstname,
+          lastname: fields.lastname,
+          email: fields.email,
+          phone: fields.phone,
+          address: fields.address,
+        });
         const { data, error } = await supabase.storage
           .from("images")
-          .update(files.avatar.filepath, files.avatar.newFilename, {
+          .update(user.avatar, fs.createReadStream(files.avatar.filepath), {
             cacheControl: "3600",
             upsert: false,
             contentType: files.avatar.mimetype,
@@ -184,6 +176,7 @@ async function update(req, res) {
           });
         return res.status(200).json({ message: "User Created" });
       } catch (error) {
+        console.log(error);
         return res.status(501).json(error);
       }
     });
