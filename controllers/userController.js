@@ -144,32 +144,44 @@ async function store(req, res) {
   });
 }
 
-// Show the form for editing the specified resource.
-
 // Update the specified resource in storage.
 async function update(req, res) {
   let user = await User.findOne({ where: { id: req.auth.id, email: req.auth.email } });
-  let authuser = user && user.id === req.params.id;
+  let authuser = user && user.id === Number(req.params.id);
+
   if (authuser || (await Admin.findOne({ where: { id: req.auth.id, email: req.auth.email } }))) {
     if (!authuser) {
       user = await User.findByPk(req.params.id);
     }
     const form = formidable({
       multiples: true,
-      uploadDir: __dirname + "/../public/img",
       keepExtensions: true,
     });
     form.parse(req, async (err, fields, files) => {
       try {
-        await User.create({
-          firstname: fields.firstname,
-          lastname: fields.lastname,
-          email: fields.email,
-          phone: fields.phone,
-          address: fields.address,
-          password: fields.password,
-          avatar: files.avatar.newFilename,
-        });
+        await User.update(
+          {
+            firstname: fields.firstname,
+            lastname: fields.lastname,
+            email: fields.email,
+            phone: fields.phone,
+            address: fields.address,
+            avatar: files.avatar.newFilename,
+          },
+          {
+            where: {
+              id: req.auth.id,
+            },
+          },
+        );
+        const { data, error } = await supabase.storage
+          .from("images")
+          .update(files.avatar.filepath, files.avatar.newFilename, {
+            cacheControl: "3600",
+            upsert: false,
+            contentType: files.avatar.mimetype,
+            duplex: "half",
+          });
         return res.status(200).json({ message: "User Created" });
       } catch (error) {
         return res.status(501).json(error);

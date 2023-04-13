@@ -18,7 +18,11 @@ router.get("/", userController.index);
 router.post("/", userController.store);
 router.get("/:id", userController.show);
 
-router.patch("/:id", userController.update);
+router.patch(
+  "/:id",
+  checkjwt({ secret: process.env.API_SECRET, algorithms: ["HS256"] }),
+  userController.update,
+);
 router.delete("/:id", userController.destroy);
 
 module.exports = router;
