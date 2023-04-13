@@ -86,12 +86,12 @@ async function token(req, res) {
     if (!admin) {
       throw new Error();
     } else if (await admin.isValidPassword(req.body.password)) {
-      admin = admin.dataValues;
+      /* admin = admin.dataValues; */
       const token = jwt.sign({ email: admin.email, id: admin.id }, process.env.API_SECRET);
       delete admin.password;
       return res.status(200).json({
         token,
-        ...admin,
+        admin,
       });
     } else {
       throw new Error();
