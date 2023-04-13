@@ -10,6 +10,6 @@ const isAdmin = require("../Middleware/isAdmin");
 router.get("/", isAdmin, adminController.index);
 router.patch("/:id", isAdmin, adminController.update);
 router.delete("/:id", isAdmin, adminController.destroy);
-router.post("/tokens", isAdmin, adminController.token);
+router.post("/tokens", adminController.token);
 
 module.exports = router;

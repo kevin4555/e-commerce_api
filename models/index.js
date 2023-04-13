@@ -42,6 +42,9 @@ Review.initModel(sequelize);
 User.hasMany(Order);
 Order.belongsTo(User);
 
+Admin.hasMany(Order);
+Order.belongsTo(Admin);
+
 Category.hasMany(Product);
 Product.belongsTo(Category);
 
