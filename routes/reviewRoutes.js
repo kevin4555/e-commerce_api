@@ -3,8 +3,7 @@ const router = express.Router();
 const reviewController = require("../controllers/reviewController");
 var { expressjwt: checkjwt } = require("express-jwt");
 
-// Rutas relacionadas a los artículos:
-// ...
+const isAdmin = require("../Middleware/isAdmin");
 
 router.get("/", reviewController.index);
 router.post(
@@ -13,7 +12,7 @@ router.post(
   reviewController.store,
 );
 router.get("/:id", reviewController.show);
-router.patch("/:id", reviewController.update);
-router.delete("/:id", reviewController.destroy);
+router.patch("/:id", isAdmin, reviewController.update);
+router.delete("/:id", isAdmin, reviewController.destroy);
 
 module.exports = router;

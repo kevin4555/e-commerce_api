@@ -3,8 +3,7 @@ const router = express.Router();
 const userController = require("../controllers/userController");
 var { expressjwt: checkjwt } = require("express-jwt");
 
-// Rutas relacionadas a los usuarios:
-// ...
+const isAdmin = require("../Middleware/isAdmin");
 
 router.post("/tokens", userController.token);
 router.post("/resetpassword", userController.sendMail);
@@ -23,6 +22,6 @@ router.patch(
   checkjwt({ secret: process.env.API_SECRET, algorithms: ["HS256"] }),
   userController.update,
 );
-router.delete("/:id", userController.destroy);
+router.delete("/:id", isAdmin, userController.destroy);
 
 module.exports = router;
