@@ -9,14 +9,30 @@ const isAdmin = require("../Middleware/isAdmin");
 
 router.get("/", productController.index);
 
-router.post("/", isAdmin, productController.store);
-router.get("/:slug", productController.show);
+router.post(
+  "/",
+  jwt({ secret: process.env.API_SECRET, algorithms: ["HS256"] }),
+  isAdmin,
+  productController.store,
+);
+jwt({ secret: process.env.API_SECRET, algorithms: ["HS256"] }),
+  router.get("/:slug", productController.show);
 
-router.patch("/:id", isAdmin, productController.update);
-router.delete("/:id", isAdmin, productController.destroy);
 router.patch(
   "/:id",
-  /* jwt({ secret: process.env.API_SECRET, algorithms: ["HS256"] }), */
+  jwt({ secret: process.env.API_SECRET, algorithms: ["HS256"] }),
+  isAdmin,
+  productController.update,
+);
+router.delete(
+  "/:id",
+  jwt({ secret: process.env.API_SECRET, algorithms: ["HS256"] }),
+  isAdmin,
+  productController.destroy,
+);
+router.patch(
+  "/:id",
+  jwt({ secret: process.env.API_SECRET, algorithms: ["HS256"] }),
   productController.update,
 );
 
