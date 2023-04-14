@@ -1,4 +1,12 @@
 const { Category, Product } = require("../models");
+const formidable = require("formidable");
+const { createClient } = require("@supabase/supabase-js");
+const fs = require("fs");
+const { v4: uuidv4 } = require("uuid");
+const path = require("path");
+
+//supabase
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
 // Display a listing of the resource.
 async function index(req, res) {
@@ -41,15 +49,30 @@ async function create(req, res) {}
 // Store a newly created resource in storage.
 async function store(req, res) {
   try {
-    await Category.create({
-      name: req.body.categoryName,
+    const form = formidable({
+      keepExtensions: true,
     });
-
-    return res.status(201).json({ message: "Product Created" });
+    form.parse(req, async (err, fields, files) => {
+      const ext = path.extname(files.img.filepath);
+      const newFileName = `category_${uuidv4()}${ext}`;
+      await Category.create({
+        name: fields.name,
+        img: newFileName,
+      });
+      await supabase.storage
+        .from("images")
+        .upload(newFileName, fs.createReadStream(files.img.filepath), {
+          cacheControl: "3600",
+          upsert: false,
+          contentType: files.img.mimetype,
+          duplex: "half",
+        });
+      return res.status(200).json({ message: "Category Created" });
+    });
   } catch (error) {
-    return res.status(501).json({
-      message: "Not Found",
-    });
+    //Analizar error imagen o user
+    console.log(error);
+    return res.status(501).json(error);
   }
 }
 
@@ -59,21 +82,51 @@ async function edit(req, res) {}
 // Update the specified resource in storage.
 async function update(req, res) {
   try {
-    await Category.update(
-      {
-        name: req.body.categoryName,
-      },
-      {
-        where: {
-          id: req.params.id,
-        },
-      },
-    );
-    return res.status(201).json({ message: "Product Updated" });
-  } catch (error) {
-    return res.status(501).json({
-      message: "Not Found",
+    const form = formidable({
+      keepExtensions: true,
     });
+    form.parse(req, async (err, fields, files) => {
+      console.log(files.img);
+      if (files.img && files.img.originalFilename !== "") {
+        const ext = path.extname(files.img.filepath);
+        const newFileName = `category_${uuidv4()}${ext}`;
+        await Category.update(
+          {
+            name: fields.name,
+            img: newFileName,
+          },
+          {
+            where: {
+              id: req.params.id,
+            },
+          },
+        );
+        await supabase.storage
+          .from("images")
+          .upload(newFileName, fs.createReadStream(files.img.filepath), {
+            cacheControl: "3600",
+            upsert: false,
+            contentType: files.img.mimetype,
+            duplex: "half",
+          });
+      } else {
+        await Category.update(
+          {
+            name: fields.name,
+          },
+          {
+            where: {
+              id: req.params.id,
+            },
+          },
+        );
+      }
+      return res.status(200).json({ message: "Category Updated" });
+    });
+  } catch (error) {
+    //Analizar error imagen o user
+    console.log(error);
+    return res.status(501).json(error);
   }
 }
 
