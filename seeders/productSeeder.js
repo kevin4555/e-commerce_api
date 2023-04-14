@@ -399,7 +399,7 @@ module.exports = async () => {
       description:
         "Esta decoración nórdica de madera con forma de arbolito es una adición encantadora a cualquier hogar. Hecho con madera natural y un diseño elegante y minimalista, este adorno agrega un toque de calidez y confort a cualquier espacio. Ya sea colgado en una pared o colocado en una repisa, este arbolito de madera es una manera sencilla y efectiva de añadir un toque de estilo escandinavo a cualquier habitación.",
       price: 89,
-      img: { img1: "Decoracion_Nordico.webp", img2: "Decoracion_Nordico2.jpg" },
+      img: { img1: "Decoracion_Nordico.png", img2: "Decoracion_Nordico2.jpg" },
       stock: 12,
       rating: 4.8,
       categoryId: 5,
@@ -409,7 +409,7 @@ module.exports = async () => {
       description:
         "Estos hermosos tumblers son la combinación perfecta de estilo y funcionalidad. Hechos a mano en cerámica terra cotta, cada tumbler tiene un diseño punteado único que le da un toque de originalidad a cualquier mesa. Además de ser visualmente atractivos, estos tumblers son ideales para servir bebidas frías o calientes gracias a su capacidad de retener la temperatura. Perfectos para cualquier ocasión, desde una cena formal hasta una reunión casual con amigos.",
       price: 15,
-      img: { img1: "Decoracion_TerraPuntoCotta.webp", img2: "Decoracion_TerraPuntoCotta2.webp" },
+      img: { img1: "Decoracion_TerraPuntoCotta.png", img2: "Decoracion_TerraPuntoCotta2.webp" },
       stock: 52,
       rating: 5,
       categoryId: 5,
