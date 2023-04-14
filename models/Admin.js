@@ -70,6 +70,11 @@ class Admin extends Model {
   async isValidPassword(password) {
     return await bcrypt.compare(password, this.password);
   }
+  toJSON() {
+    const values = { ...this.get() };
+    delete values.password;
+    return values;
+  }
 }
 
 module.exports = Admin;
