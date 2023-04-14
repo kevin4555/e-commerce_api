@@ -8,6 +8,8 @@ const isAdmin = require("../Middleware/isAdmin");
 // Rutas relacionadas al panel de control (Admin):
 // ...
 
+router.post("/tokens", adminController.token);
+
 router.get(
   "/",
   jwt({ secret: process.env.API_SECRET, algorithms: ["HS256"] }),
@@ -17,7 +19,7 @@ router.get(
 router.post(
   "/",
   jwt({ secret: process.env.API_SECRET, algorithms: ["HS256"] }),
-  isAdmin,
+  // isAdmin,
   adminController.store,
 );
 
@@ -33,6 +35,5 @@ router.delete(
   isAdmin,
   adminController.destroy,
 );
-router.post("/tokens", adminController.token);
 
 module.exports = router;
