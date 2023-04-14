@@ -6,7 +6,6 @@ const fs = require("fs");
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
 const transporter = require("./../transporter");
-const { log } = require("console");
 
 //supabase
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
@@ -107,12 +106,12 @@ async function show(req, res) {
 
 // Store a newly created resource in storage.
 async function store(req, res) {
-  const form = formidable({
-    multiples: true,
-    keepExtensions: true,
-  });
-  form.parse(req, async (err, fields, files) => {
-    try {
+  try {
+    const form = formidable({
+      multiples: true,
+      keepExtensions: true,
+    });
+    form.parse(req, async (err, fields, files) => {
       const ext = path.extname(files.avatar.filepath);
       const newFileName = `profile_${uuidv4()}${ext}`;
       const user = await User.create({
@@ -137,38 +136,37 @@ async function store(req, res) {
         token,
         user,
       });
-    } catch (error) {
-      //Analizar error imagen o user
-      console.log(error);
-      return res.status(501).json(error);
-    }
-  });
+    });
+  } catch (error) {
+    //Analizar error imagen o user
+    console.log(error);
+    return res.status(501).json(error);
+  }
 }
 
 // Update the specified resource in storage.
 async function update(req, res) {
-  let user = await User.findOne({ where: { id: req.auth.id /* email: req.auth.email */ } });
-  let authuser = user && user.id === Number(req.params.id);
+  try {
+    let user = await User.findOne({ where: { id: req.auth.id /* email: req.auth.email */ } });
+    let authuser = user && user.id === Number(req.params.id);
 
-  if (
-    authuser ||
-    (await Admin.findOne({ where: { id: req.auth.id /* email: req.auth.email */ } }))
-  ) {
-    if (!authuser) {
-      user = await User.findByPk(req.params.id);
-    }
-    const form = formidable({
-      multiples: true,
-      keepExtensions: true,
-    });
-    form.parse(req, async (err, fields, files) => {
-      try {
+    if (
+      authuser ||
+      (await Admin.findOne({ where: { id: req.auth.id /* email: req.auth.email */ } }))
+    ) {
+      if (!authuser) {
+        user = await User.findByPk(req.params.id);
+      }
+      const form = formidable({
+        multiples: true,
+        keepExtensions: true,
+      });
+      form.parse(req, async (err, fields, files) => {
         if (!user.avatar.includes("default")) {
           await supabase.storage.from("images").remove([`${user.avatar}`]);
         }
         let newFileName = user.avatar;
-        console.log(Boolean(files.avatar.originalFilename === ""));
-        if (files.avatar.originalFilename !== "") {
+        if (files.avatar && files.avatar.originalFilename !== "") {
           const ext = path.extname(files.avatar.filepath);
           newFileName = `profile_${uuidv4()}${ext}`;
         }
@@ -181,7 +179,7 @@ async function update(req, res) {
           address: fields.address,
           avatar: newFileName,
         });
-        if (files.avatar.originalFilename !== "") {
+        if (files.avatar && files.avatar.originalFilename !== "") {
           await supabase.storage
             .from("images")
             .upload(newFileName, fs.createReadStream(files.avatar.filepath), {
@@ -192,13 +190,13 @@ async function update(req, res) {
             });
         }
         return res.status(200).json({ user });
-      } catch (error) {
-        console.log(error);
-        return res.status(501).json(error);
-      }
-    });
-  } else {
-    return res.status(401).json({ msg: "No tienes la Autorización" });
+      });
+    } else {
+      throw new Error("No tienes la Autorización");
+    }
+  } catch (error) {
+    console.log(error);
+    return res.status(501).json(error);
   }
 }
 

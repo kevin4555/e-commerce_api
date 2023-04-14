@@ -37,45 +37,45 @@ async function create(req, res) {}
 
 // Store a newly created resource in storage.
 async function store(req, res) {
-  const products = [];
-  let totalPrice = 0;
-  const { items, address, userId, adminId } = req.body;
-  console.log("1", userId.length);
-  console.log("2", adminId);
+  try {
+    const products = [];
+    let totalPrice = 0;
+    const { items, address, userId, adminId } = req.body;
+    console.log("1", userId.length);
+    console.log("2", adminId);
 
-  /* try { */
-  for (const item of items) {
-    let product = await Product.findByPk(item.id);
-    products.push(product);
-    totalPrice = Number(totalPrice) + Number(product.price * item.quantity);
-    product.stock = product.stock - Number(item.quantity);
-    if (product.stock < 0) {
-      return res.json({ msg: "Fuera de Stock" });
-    } else {
-      await product.save();
+    for (const item of items) {
+      let product = await Product.findByPk(item.id);
+      products.push(product);
+      totalPrice = Number(totalPrice) + Number(product.price * item.quantity);
+      product.stock = product.stock - Number(item.quantity);
+      if (product.stock < 0) {
+        return res.json({ msg: "Fuera de Stock" });
+      } else {
+        await product.save();
+      }
     }
-  }
-  userId
-    ? await Order.create({
-        status: "Procesando",
-        address: { ...address },
-        products: { products: [...products] },
-        totalPrice,
-        userId,
-      })
-    : await Order.create({
-        status: "Procesando",
-        address: { ...address },
-        products: { products: [...products] },
-        totalPrice,
-        adminId,
-      });
-  return res.status(201).json({ message: "Order Created" });
-  /* } catch (error) {
+    userId
+      ? await Order.create({
+          status: "Procesando",
+          address: { ...address },
+          products: { products: [...products] },
+          totalPrice,
+          userId,
+        })
+      : await Order.create({
+          status: "Procesando",
+          address: { ...address },
+          products: { products: [...products] },
+          totalPrice,
+          adminId,
+        });
+    return res.status(201).json({ message: "Order Created" });
+  } catch (error) {
     return res.status(501).json({
       message: "Not Found",
     });
-  } */
+  }
 }
 
 // Show the form for editing the specified resource.

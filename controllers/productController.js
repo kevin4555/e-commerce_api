@@ -1,11 +1,17 @@
 const { Product, Review, User } = require("../models");
 const formidable = require("formidable");
+const { createClient } = require("@supabase/supabase-js");
+const fs = require("fs");
+const path = require("path");
+
+//supabase
+const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
 
 // Display a listing of the resource.
 async function index(req, res) {
-  const categoryId = req.query.categoryId;
-  let products = [];
   try {
+    const categoryId = req.query.categoryId;
+    let products = [];
     if (categoryId) {
       products = await Product.findAll({
         where: {
@@ -22,18 +28,6 @@ async function index(req, res) {
     });
   }
 }
-/*   try {
-    const products = await Product.findAll();
-    if (!products) {
-      //Analizar
-      throw new Error();
-    }
-    return res.json(products);
-  } catch (error) {
-    return res.status(500).json({
-      message: "Internal Server Error",
-    });
-  } */
 
 // Display the specified resource.
 async function show(req, res) {
@@ -66,18 +60,29 @@ async function create(req, res) {}
 
 // Store a newly created resource in storage.
 async function store(req, res) {
-  const form = formidable({
-    multiples: true,
-    uploadDir: __dirname + "/../public/img",
-    keepExtensions: true,
-  });
   try {
+    const form = formidable({
+      multiples: true,
+      keepExtensions: true,
+    });
     form.parse(req, async (err, fields, files) => {
+      let img = {};
+      for (let index = 0; index < Math.min(files.imgs.length, 2); index++) {
+        img[`img${index + 1}`] = files.imgs[index].newFilename;
+        await supabase.storage
+          .from("images")
+          .upload(files.imgs[index].newFilename, fs.createReadStream(files.imgs[index].filepath), {
+            cacheControl: "3600",
+            upsert: false,
+            contentType: files.imgs[index].mimetype,
+            duplex: "half",
+          });
+      }
       await Product.create({
         title: fields.title,
         description: fields.description,
         price: fields.price,
-        img: { img1: files.img.newFilename },
+        img,
         stock: fields.stock,
         featured: fields.featured,
         slug: fields.slug,
@@ -86,7 +91,7 @@ async function store(req, res) {
       });
     });
     return res.status(201).json({ message: "Product Created" });
-  } catch (error) {
+  } catch (err) {
     return res.status(501).json({
       message: "Internal Server Error",
     });
@@ -98,19 +103,30 @@ async function edit(req, res) {}
 
 // Update the specified resource in storage.
 async function update(req, res) {
-  const form = formidable({
-    multiples: true,
-    uploadDir: __dirname + "/../public/img",
-    keepExtensions: true,
-  });
   try {
+    const form = formidable({
+      multiples: true,
+      keepExtensions: true,
+    });
     form.parse(req, async (err, fields, files) => {
+      let img = {};
+      for (let index = 0; index < Math.min(files.imgs.length, 2); index++) {
+        img[`img${index + 1}`] = files.imgs[index].newFilename;
+        await supabase.storage
+          .from("images")
+          .upload(files.imgs[index].newFilename, fs.createReadStream(files.imgs[index].filepath), {
+            cacheControl: "3600",
+            upsert: false,
+            contentType: files.imgs[index].mimetype,
+            duplex: "half",
+          });
+      }
       await Product.update(
         {
           title: fields.title,
           description: fields.description,
           price: fields.price,
-          img: { img1: files.img.newFilename },
+          img,
           stock: fields.stock,
           featured: fields.featured,
           slug: fields.slug,

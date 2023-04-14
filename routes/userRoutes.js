@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const userController = require("../controllers/userController");
-var { expressjwt: checkjwt } = require("express-jwt");
+var { expressjwt: jwt } = require("express-jwt");
 
 const isAdmin = require("../Middleware/isAdmin");
 
@@ -9,7 +9,7 @@ router.post("/tokens", userController.token);
 router.post("/resetpassword", userController.sendMail);
 router.put(
   "/resetpassword",
-  checkjwt({ secret: process.env.API_SECRET, algorithms: ["HS256"] }),
+  jwt({ secret: process.env.API_SECRET, algorithms: ["HS256"] }),
   userController.resetPassword,
 );
 router.get("/", userController.index);
@@ -19,9 +19,14 @@ router.get("/:id", userController.show);
 
 router.patch(
   "/:id",
-  checkjwt({ secret: process.env.API_SECRET, algorithms: ["HS256"] }),
+  jwt({ secret: process.env.API_SECRET, algorithms: ["HS256"] }),
   userController.update,
 );
-router.delete("/:id", isAdmin, userController.destroy);
+router.delete(
+  "/:id",
+  jwt({ secret: process.env.API_SECRET, algorithms: ["HS256"] }),
+  isAdmin,
+  userController.destroy,
+);
 
 module.exports = router;
