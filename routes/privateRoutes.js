@@ -14,6 +14,13 @@ router.get(
   isAdmin,
   adminController.index,
 );
+router.post(
+  "/",
+  jwt({ secret: process.env.API_SECRET, algorithms: ["HS256"] }),
+  isAdmin,
+  adminController.store,
+);
+
 router.patch(
   "/:id",
   jwt({ secret: process.env.API_SECRET, algorithms: ["HS256"] }),
