@@ -32,14 +32,23 @@ async function show(req, res) {
   }
 }
 
-// Show the form for creating a new resource
-async function create(req, res) {}
-
 // Store a newly created resource in storage.
-async function store(req, res) {}
-
-// Show the form for editing the specified resource.
-async function edit(req, res) {}
+async function store(req, res) {
+  const { firstName, lastName, email, password } = req.body;
+  try {
+    await Admin.create({
+      firstName,
+      lastName,
+      email,
+      password,
+    });
+    return res.status(201).json({ message: "Admin created" });
+  } catch (error) {
+    return res.status(501).json({
+      message: "Not Found",
+    });
+  }
+}
 
 // Update the specified resource in storage.
 async function update(req, res) {
@@ -102,9 +111,7 @@ async function token(req, res) {
 module.exports = {
   index,
   show,
-  create,
   store,
-  edit,
   update,
   destroy,
   token,
