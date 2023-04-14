@@ -89,8 +89,8 @@ async function store(req, res) {
         rating: fields.rating,
         categoryId: fields.categoryId,
       });
+      return res.status(201).json({ message: "Product Created" });
     });
-    return res.status(201).json({ message: "Product Created" });
   } catch (err) {
     return res.status(501).json({
       message: "Internal Server Error",
@@ -139,8 +139,8 @@ async function update(req, res) {
           },
         },
       );
+      return res.status(201).json({ message: "Product Updated" });
     });
-    return res.status(201).json({ message: "Product Updated" });
   } catch (error) {
     return res.status(501).json({
       message: "Not Found",
