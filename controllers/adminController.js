@@ -34,11 +34,11 @@ async function show(req, res) {
 
 // Store a newly created resource in storage.
 async function store(req, res) {
-  const { firstName, lastName, email, password } = req.body;
   try {
+    const { firstname, lastname, email, password } = req.body;
     await Admin.create({
-      firstName,
-      lastName,
+      firstname,
+      lastname,
       email,
       password,
     });

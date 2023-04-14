@@ -19,7 +19,7 @@ router.get(
 router.post(
   "/",
   jwt({ secret: process.env.API_SECRET, algorithms: ["HS256"] }),
-  // isAdmin,
+  isAdmin,
   adminController.store,
 );
 
