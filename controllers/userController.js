@@ -6,6 +6,7 @@ const fs = require("fs");
 const path = require("path");
 const { v4: uuidv4 } = require("uuid");
 const transporter = require("./../transporter");
+const { log } = require("console");
 
 //supabase
 const supabase = createClient(process.env.SUPABASE_URL, process.env.SUPABASE_KEY);
@@ -162,23 +163,35 @@ async function update(req, res) {
     });
     form.parse(req, async (err, fields, files) => {
       try {
+        if (!user.avatar.includes("default")) {
+          await supabase.storage.from("images").remove([`${user.avatar}`]);
+        }
+        let newFileName = user.avatar;
+        console.log(Boolean(files.avatar.originalFilename === ""));
+        if (files.avatar.originalFilename !== "") {
+          const ext = path.extname(files.avatar.filepath);
+          newFileName = `profile_${uuidv4()}${ext}`;
+        }
+
         await user.update({
           firstname: fields.firstname,
           lastname: fields.lastname,
           email: fields.email,
           phone: fields.phone,
           address: fields.address,
-          avatar: files.avatar.originalFilename,
+          avatar: newFileName,
         });
-        const { data, error } = await supabase.storage
-          .from("images")
-          .upload(user.avatar, fs.createReadStream(files.avatar.filepath), {
-            cacheControl: "3600",
-            upsert: false,
-            contentType: files.avatar.mimetype,
-            duplex: "half",
-          });
-        return res.status(200).json({ message: "User Created" });
+        if (files.avatar.originalFilename !== "") {
+          await supabase.storage
+            .from("images")
+            .upload(newFileName, fs.createReadStream(files.avatar.filepath), {
+              cacheControl: "3600",
+              upsert: false,
+              contentType: files.avatar.mimetype,
+              duplex: "half",
+            });
+        }
+        return res.status(200).json({ user });
       } catch (error) {
         console.log(error);
         return res.status(501).json(error);
