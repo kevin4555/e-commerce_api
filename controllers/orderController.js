@@ -41,8 +41,6 @@ async function store(req, res) {
     const products = [];
     let totalPrice = 0;
     const { items, address, userId, adminId } = req.body;
-    console.log("1", userId.length);
-    console.log("2", adminId);
 
     for (const item of items) {
       let product = await Product.findByPk(item.id);
