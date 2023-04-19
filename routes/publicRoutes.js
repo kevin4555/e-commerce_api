@@ -27,11 +27,15 @@ router.post("/newsletter", async (req, res) => {
       from: `"Manos Creativas" <${process.env.EMAIL_USER}>`, // sender address
       to: req.body.email, // list of receivers
       subject: "Sobre Nosotros", // Subject line
-      html: `<p>Esto es <b>Manos Creativas</b>, un <b>eCommerce ficticio</b> realizado por 4
-      compañeros a lo largo de 3 semanas como proyecto final del<b>Bootcamp de Hack Academy</b>. El Bootcamp de Full-Stack development de Hack Academy es un curso
-      <b> intensivo</b> de 3 meses con una carga horaria de más de 600 horas.</p>
-      <a href="https://manoscreativas.vercel.app/about-us">https://manoscreativas.vercel.app/about-us</a>
-        `, // html body
+      html: `<p>
+      Esto es <b>Manos Creativas</b>, un <b>eCommerce ficticio</b> realizado por 3
+      compañeros a lo largo de 3 semanas como proyecto final del <b>Bootcamp de Hack Academy</b>.
+      El Bootcamp de Full-Stack development de Hack Academy es un curso <b>intensivo</b> de 3 meses con una carga horaria de más de 600 horas.
+    </p>
+    <p>
+    Si quieres saber más visita:
+    <a href="https://manoscreativas.vercel.app/about-us">https://manoscreativas.vercel.app/about-us</a>
+    </p>`, // html body
     };
     await transporter.sendMail(mailOptions);
     return res.status(200).json("Enviado");
